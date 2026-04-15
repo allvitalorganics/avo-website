@@ -26,7 +26,8 @@
       background: #0B1707;
       margin: 0;
       padding: 12px;
-      min-height: 100vh;
+      height: 100vh;
+      overflow: hidden;
       font-family: 'Times New Roman', Times, Georgia, serif;
       color: #F5F0E8;
     }
@@ -41,7 +42,7 @@
       gap: 12px;
       max-width: 1400px;
       margin: 0 auto;
-      /* no min-height — let content determine page height */
+      height: calc(100vh - 24px); /* fit exactly one screen */
     }
 
     /* ========================================
@@ -52,8 +53,8 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 16px;
-      height: 44px;
+      padding: 0 12px;
+      height: 36px;
       background: #111;
       border-radius: 16px;
     }
@@ -196,7 +197,7 @@
     .photo-card {
       padding: 0 !important;
       overflow: hidden;
-      max-height: 120px;
+      max-height: 100px;
     }
 
     .photo-card img {
@@ -249,7 +250,7 @@
 
     .conversation-textarea {
       flex: 1;
-      min-height: 120px;
+      min-height: 90px;
       width: 100%;
       background: rgba(109, 190, 71, 0.04);
       backdrop-filter: blur(12px);
@@ -531,7 +532,7 @@
        ======================================== */
     @media (max-width: 600px) {
       body {
-        padding: 8px;
+        padding: 12px;
       }
 
       .dashboard {
