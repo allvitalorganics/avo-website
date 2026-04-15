@@ -236,6 +236,13 @@
     /* Footer legal links */
     .footer-legal {
       margin-top: 6px;
+      display: none; /* hidden on desktop — header has legal links */
+    }
+
+    @media (max-width: 900px) {
+      .footer-legal {
+        display: block; /* show on tablet/mobile where header legal is hidden */
+      }
     }
 
     .footer-legal a {
