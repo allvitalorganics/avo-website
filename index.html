@@ -41,7 +41,7 @@
       gap: 12px;
       max-width: 1400px;
       margin: 0 auto;
-      min-height: calc(100vh - 24px);
+      /* no min-height — let content determine page height */
     }
 
     /* ========================================
@@ -113,7 +113,7 @@
        ======================================== */
     .card {
       border-radius: 16px;
-      padding: 24px;
+      padding: 16px;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -194,6 +194,7 @@
     .photo-card {
       padding: 0 !important;
       overflow: hidden;
+      max-height: 160px;
     }
 
     .photo-card img {
@@ -241,12 +242,12 @@
       -webkit-backdrop-filter: blur(16px);
       border: 1px solid rgba(109, 190, 71, 0.10);
       border-radius: 16px;
-      padding: 32px;
+      padding: 20px;
     }
 
     .conversation-textarea {
       flex: 1;
-      min-height: 300px;
+      min-height: 180px;
       width: 100%;
       background: rgba(109, 190, 71, 0.04);
       backdrop-filter: blur(12px);
@@ -512,7 +513,7 @@
       }
 
       .conversation-textarea {
-        min-height: 250px;
+        min-height: 140px;
       }
     }
 
@@ -525,7 +526,7 @@
       }
 
       .dashboard {
-        gap: 10px;
+        gap: 12px;
       }
 
       .left-col {
@@ -545,11 +546,11 @@
       }
 
       .conversation-wrap {
-        padding: 20px;
+        padding: 16px;
       }
 
       .conversation-textarea {
-        min-height: 200px;
+        min-height: 120px;
       }
 
       .conversation-footer {
