@@ -39,7 +39,7 @@
       display: grid;
       grid-template-columns: 1fr 2.5fr 1fr;
       /* 6 content rows: top bar fixed, 5 equal rows for sidebar cards, bottom = same as one card row */
-      grid-template-rows: 36px repeat(5, 1fr);
+      grid-template-rows: 36px repeat(5, 1fr) auto;
       gap: 12px;
       max-width: 1400px;
       margin: 0 auto;
@@ -107,11 +107,15 @@
        BOTTOM ROW — sits in row 6, matches center width
        ======================================== */
     .bottom-row {
-      grid-column: 2; /* only the center column */
-      grid-row: 6;
+      grid-column: 1 / -1; /* span full width like top bar */
+      grid-row: 7;
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: 1fr 1.25fr 1.25fr 1fr;
       gap: 12px;
+    }
+
+    .bottom-span-2 {
+      grid-column: span 2;
     }
 
     /* ========================================
@@ -691,23 +695,18 @@
        ========================================== -->
   <div class="bottom-row">
 
-    <!-- 1. Phrase -- get home safe -->
-    <div class="card card--dark bottom-card" style="display:flex;align-items:center;justify-content:center;">
-      <span class="phrase-text" style="color:#6DBE47;">get home safe.</span>
+    <!-- 1. Photo -- matcha -->
+    <div class="card photo-card bottom-card">
+      <img src="img/matcha.jpg" alt="Matcha" loading="lazy">
     </div>
 
-    <!-- 2. Subscribe -->
-    <div class="card card--glass bottom-card">
+    <!-- 2+3. Subscribe -- spans 2 middle columns -->
+    <div class="card card--glass bottom-card bottom-span-2">
       <span class="subscribe-label">a letter, sometimes.</span>
       <form class="subscribe-form" onsubmit="return false;">
         <input type="email" placeholder="your@email.com">
         <button type="submit">subscribe</button>
       </form>
-    </div>
-
-    <!-- 3. Photo -- matcha -->
-    <div class="card photo-card bottom-card">
-      <img src="img/matcha.jpg" alt="Matcha" loading="lazy">
     </div>
 
     <!-- 4. Belief + footer -->
