@@ -53,7 +53,7 @@
       align-items: center;
       justify-content: space-between;
       padding: 0 16px;
-      height: 48px;
+      height: 44px;
       background: #111;
       border-radius: 16px;
     }
@@ -117,6 +117,8 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
+      align-items: center;
+      text-align: center;
       position: relative;
       overflow: hidden;
       opacity: 0;
@@ -242,7 +244,7 @@
       -webkit-backdrop-filter: blur(16px);
       border: 1px solid rgba(109, 190, 71, 0.10);
       border-radius: 16px;
-      padding: 20px;
+      padding: 16px;
     }
 
     .conversation-textarea {
@@ -254,7 +256,7 @@
       -webkit-backdrop-filter: blur(12px);
       border: 1px solid rgba(109, 190, 71, 0.08);
       border-radius: 16px;
-      padding: 20px;
+      padding: 16px;
       color: #F5F0E8;
       font-family: 'Times New Roman', Times, Georgia, serif;
       font-size: 15px;
@@ -281,9 +283,11 @@
 
     .conversation-footer {
       display: flex;
+      flex-direction: column;
       align-items: center;
       gap: 12px;
-      margin-top: 16px;
+      margin-top: 12px;
+      text-align: center;
     }
 
     .conversation-send {
@@ -368,6 +372,8 @@
       font-size: 14px;
       line-height: 1.6;
       opacity: 0.85;
+      text-align: justify;
+      text-align-last: center;
     }
 
     .phrase-text {
@@ -397,7 +403,7 @@
        BOTTOM ROW STYLES
        ======================================== */
     .bottom-card {
-      aspect-ratio: 1 / 1;
+      /* rectangle, not square — fits in single viewport */
     }
 
     .subscribe-label {
@@ -409,7 +415,8 @@
 
     .subscribe-form {
       display: flex;
-      gap: 8px;
+      gap: 12px;
+      width: 100%;
     }
 
     .subscribe-form input {
@@ -542,7 +549,7 @@
       }
 
       .bottom-card {
-        aspect-ratio: 1 / 1;
+        /* no aspect-ratio on mobile */
       }
 
       .conversation-wrap {
@@ -563,7 +570,7 @@
       }
 
       .card {
-        padding: 20px;
+        padding: 16px;
       }
 
       .photo-card {
@@ -629,7 +636,7 @@
       ></textarea>
       <div class="conversation-footer">
         <button class="conversation-send" onclick="sendConversation()">send</button>
-        <span class="conversation-note">goes to alex@allvitalorganics.com</span>
+        <span class="conversation-note">goes to alex@allvitalorganics.co</span>
       </div>
       <div class="conversation-sent" id="conversationSent">sent. take care of yourself.</div>
     </div>
@@ -740,7 +747,7 @@
     var msg = textarea.value.trim();
     if (!msg) return;
 
-    var mailto = 'mailto:alex@allvitalorganics.com?subject=' +
+    var mailto = 'mailto:alex@allvitalorganics.co?subject=' +
       encodeURIComponent('Message from AVO site') +
       '&body=' + encodeURIComponent(msg);
     window.location.href = mailto;
