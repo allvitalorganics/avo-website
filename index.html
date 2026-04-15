@@ -23,87 +23,129 @@
     }
 
     body {
-      font-family: 'Inter', system-ui, sans-serif;
       background: #0A0A0A;
-      color: #F5F0E8;
-      min-height: 100vh;
-      padding: 12px;
       margin: 0;
+      padding: 12px;
+      min-height: 100vh;
+      font-family: 'Inter', system-ui, sans-serif;
+      color: #F5F0E8;
     }
 
     /* ========================================
-       BENTO GRID
+       DASHBOARD GRID
        ======================================== */
-    .bento {
+    .dashboard {
+      display: grid;
+      grid-template-columns: 1fr 2.5fr 1fr;
+      grid-template-rows: auto 1fr auto;
+      gap: 12px;
+      max-width: 1400px;
+      margin: 0 auto;
+      min-height: calc(100vh - 24px);
+    }
+
+    /* ========================================
+       TOP BAR
+       ======================================== */
+    .top-bar {
+      grid-column: 1 / -1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 16px;
+      height: 48px;
+      background: #111;
+      border-radius: 16px;
+    }
+
+    .top-bar-brand {
+      font-family: 'DM Serif Display', serif;
+      font-size: 16px;
+      color: #F5F0E8;
+    }
+
+    .top-bar-link {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: #666;
+      text-decoration: none;
+      letter-spacing: 0.04em;
+    }
+
+    .top-bar-link:hover {
+      color: #52B788;
+    }
+
+    /* ========================================
+       COLUMNS
+       ======================================== */
+    .left-col {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .center {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .right-col {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    /* ========================================
+       BOTTOM ROW
+       ======================================== */
+    .bottom-row {
+      grid-column: 1 / -1;
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
-      max-width: 1200px;
-      margin: 0 auto;
+      gap: 12px;
     }
-
-    /* ========================================
-       CARD SIZES — consistent min-heights
-       ======================================== */
-    .c1 { grid-column: span 1; min-height: 180px; }
-    .c2 { grid-column: span 2; min-height: 180px; }
-    .c3 { grid-column: span 3; min-height: 180px; }
-    .c4 { grid-column: span 4; min-height: 120px; }
-    .c1x2 { grid-column: span 1; grid-row: span 2; min-height: 376px; }
-    .c2x2 { grid-column: span 2; grid-row: span 2; min-height: 376px; }
 
     /* ========================================
        BASE CARD
        ======================================== */
     .card {
+      border-radius: 16px;
       padding: 24px;
       display: flex;
       flex-direction: column;
       justify-content: center;
       position: relative;
       overflow: hidden;
-      border-radius: 16px;
-      /* animation handled by IntersectionObserver */
       opacity: 0;
-      transform: translateY(12px);
+      transform: translateY(8px);
     }
 
     .card.is-visible {
       opacity: 1;
       transform: translateY(0);
-      transition: opacity 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-                  transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      transition: opacity 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                  transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
 
     /* ========================================
-       BORDER-RADIUS — one system
-       Only the name card gets r-0
+       CARD VARIANTS
        ======================================== */
-    .r-0 { border-radius: 0 !important; }
-
-    /* ========================================
-       CARD VARIANTS — tightened color system
-       ======================================== */
-
-    /* Dark card — #111 lifts off #0A0A0A bg */
     .card--dark {
       background: #111;
       color: #F5F0E8;
     }
 
-    /* Green card — flat */
     .card--green {
       background: #1B4332;
       color: #F5F0E8;
     }
 
-    /* Cream / light card */
     .card--cream {
       background: #F5F0E8;
       color: #1A1A1A;
     }
 
-    /* Glass card */
     .card--glass {
       background: rgba(255,255,255,0.04);
       backdrop-filter: blur(16px);
@@ -113,7 +155,134 @@
     }
 
     /* ========================================
-       TYPOGRAPHY — tightened system
+       SPECIAL: Name card — brutalist anchor
+       ======================================== */
+    .card--name {
+      border-radius: 0 !important;
+    }
+
+    /* ========================================
+       PHOTO CARDS
+       ======================================== */
+    .photo-card {
+      padding: 0 !important;
+      overflow: hidden;
+    }
+
+    .photo-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* ========================================
+       CONVERSATION CENTER
+       ======================================== */
+    .conversation-wrap {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 16px;
+      padding: 32px;
+    }
+
+    .conversation-label {
+      font-family: 'Caveat', cursive;
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: #52B788;
+      margin-bottom: 20px;
+    }
+
+    .conversation-textarea {
+      flex: 1;
+      min-height: 300px;
+      width: 100%;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 16px;
+      padding: 20px;
+      color: #F5F0E8;
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 15px;
+      line-height: 1.7;
+      resize: none;
+      outline: none;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .conversation-textarea::placeholder {
+      color: rgba(245,240,232,0.25);
+    }
+
+    .conversation-textarea:focus {
+      border-color: rgba(82,183,136,0.3);
+      box-shadow: 0 0 0 3px rgba(82,183,136,0.08);
+      animation: pulse-border 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse-border {
+      0%, 100% { box-shadow: 0 0 0 3px rgba(82,183,136,0.08); }
+      50% { box-shadow: 0 0 0 5px rgba(82,183,136,0.15); }
+    }
+
+    .conversation-footer {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .conversation-send {
+      background: #1B4332;
+      color: #F5F0E8;
+      border: none;
+      border-radius: 12px;
+      padding: 10px 24px;
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 14px;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .conversation-send:hover {
+      background: #2D6A4F;
+    }
+
+    .conversation-note {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      color: #444;
+      letter-spacing: 0.03em;
+    }
+
+    /* Sent confirmation overlay */
+    .conversation-sent {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Caveat', cursive;
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      color: #52B788;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+      z-index: 2;
+    }
+
+    .conversation-sent.show {
+      opacity: 1;
+    }
+
+    /* ========================================
+       TYPOGRAPHY HELPERS
        ======================================== */
     .t-serif {
       font-family: 'DM Serif Display', serif;
@@ -132,133 +301,73 @@
       font-family: 'JetBrains Mono', monospace;
     }
 
-    .t-body {
-      font-family: 'Inter', system-ui, sans-serif;
-    }
-
-    /* Impact words — BIG */
-    .t-impact {
+    /* ========================================
+       LEFT COLUMN CARD STYLES
+       ======================================== */
+    .name-title {
       font-family: 'DM Serif Display', serif;
-      font-size: clamp(2rem, 5vw, 3.5rem);
-      line-height: 1;
-      color: #52B788;
-    }
-
-    /* Phrases (Caveat) */
-    .t-phrase {
-      font-family: 'Caveat', cursive;
-      font-size: clamp(1.4rem, 3vw, 2rem);
+      font-size: clamp(1.2rem, 2vw, 1.6rem);
       line-height: 1.2;
     }
 
-    /* Brand name */
-    .t-brand {
-      font-family: 'DM Serif Display', serif;
-      font-size: clamp(1.8rem, 4vw, 2.8rem);
-      line-height: 1.1;
-    }
-
-    /* Journal entries */
-    .t-journal {
-      font-size: 15px;
-      line-height: 1.7;
-      font-weight: 300;
-    }
-
-    /* Monospace labels */
-    .t-label {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 11px;
-      letter-spacing: 0.05em;
-    }
-
-    .t-green { color: #52B788; }
-    .t-cream { color: #F5F0E8; }
-    .t-dark { color: #1A1A1A; }
-    .t-muted { color: #666; }
-
-    /* ========================================
-       PHOTO CARDS — consistent treatment
-       ======================================== */
-    .photo-card {
-      padding: 0 !important;
-      overflow: hidden;
-    }
-
-    .photo-card img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    }
-
-    .photo-card:hover img {
-      transform: scale(1.02);
-    }
-
-    /* Placeholder fallback */
-    .photo-placeholder {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 180px;
-    }
-
-    .photo-placeholder span {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 11px;
-      letter-spacing: 0.05em;
-      color: #666;
-    }
-
-    /* ========================================
-       SPECIFIC COMPONENTS
-       ======================================== */
-
-    /* Stats stacked */
-    .stats-stack {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-
-    /* About bio */
-    .about-bio p {
-      margin-bottom: 14px;
-      font-size: 14px;
-      line-height: 1.7;
+    .about-text {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 13px;
+      line-height: 1.6;
       opacity: 0.85;
     }
 
-    .about-bio p:last-child {
-      margin-bottom: 0;
+    .phrase-text {
+      font-family: 'Caveat', cursive;
+      font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+      line-height: 1.3;
     }
 
-    /* Journal date */
-    .journal-date {
+    /* ========================================
+       RIGHT COLUMN CARD STYLES
+       ======================================== */
+    .making-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 15px;
+      line-height: 1.5;
+    }
+
+    .making-label {
       font-family: 'JetBrains Mono', monospace;
       font-size: 10px;
       color: #666;
-      margin-bottom: 10px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    /* Brand sub-label */
-    .brand-label {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 10px;
-      color: #666;
-      margin-top: 10px;
+      margin-top: 8px;
       letter-spacing: 0.06em;
     }
 
-    /* Subscribe form */
+    .stats-text {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      line-height: 2;
+      letter-spacing: 0.03em;
+    }
+
+    /* Green left border accent */
+    .border-left-green {
+      border-left: 3px solid #52B788;
+    }
+
+    /* ========================================
+       BOTTOM ROW STYLES
+       ======================================== */
+    .bottom-card {
+      min-height: 140px;
+    }
+
+    .subscribe-label {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1rem, 2vw, 1.3rem);
+      margin-bottom: 12px;
+    }
+
     .subscribe-form {
       display: flex;
       gap: 8px;
-      margin-top: 16px;
     }
 
     .subscribe-form input {
@@ -269,7 +378,7 @@
       color: #F5F0E8;
       font-family: 'JetBrains Mono', monospace;
       font-size: 12px;
-      border-radius: 12px;
+      border-radius: 16px;
       outline: none;
     }
 
@@ -292,55 +401,28 @@
       cursor: pointer;
       border-radius: 12px;
       letter-spacing: 0.03em;
+      white-space: nowrap;
     }
 
     .subscribe-form button:hover {
       background: #6FCF97;
     }
 
-    /* Message form */
-    .message-form {
-      display: flex;
-      gap: 8px;
+    .belief-text {
+      font-family: 'DM Serif Display', serif;
+      font-style: italic;
+      font-size: clamp(0.95rem, 1.8vw, 1.15rem);
+      line-height: 1.5;
+      margin-bottom: 16px;
     }
 
-    .message-form input {
-      flex: 1;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 12px;
-      padding: 12px 16px;
-      color: #F5F0E8;
-      font-family: 'Inter', sans-serif;
-      font-size: 14px;
-      outline: none;
+    .footer-meta {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      color: #666;
+      letter-spacing: 0.04em;
     }
 
-    .message-form input::placeholder {
-      color: rgba(245,240,232,0.3);
-    }
-
-    .message-form input:focus {
-      border-color: #52B788;
-    }
-
-    .message-form button {
-      background: #1B4332;
-      border: none;
-      border-radius: 12px;
-      padding: 12px 20px;
-      color: #F5F0E8;
-      font-family: 'Inter', sans-serif;
-      font-size: 13px;
-      cursor: pointer;
-      white-space: nowrap;
-    }
-
-    .message-form button:hover {
-      background: #2D6A4F;
-    }
-
-    /* Footer link */
     .footer-link {
       color: #52B788;
       text-decoration: none;
@@ -352,245 +434,228 @@
       text-decoration: underline;
     }
 
-    /* Green left border accent */
-    .border-left-green {
-      border-left: 3px solid #52B788;
-    }
-
     /* ========================================
-       RESPONSIVE
+       RESPONSIVE — 900px
        ======================================== */
-    @media (max-width: 768px) {
-      .bento {
+    @media (max-width: 900px) {
+      .dashboard {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+      }
+
+      .top-bar {
+        grid-column: 1;
+      }
+
+      .left-col {
+        display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 12px;
       }
-      .c2, .c3, .c4, .c2x2 { grid-column: span 2; }
-      .c1x2 { grid-row: span 2; }
-      .t-brand { font-size: clamp(1.6rem, 4vw, 2.4rem); }
-      .t-impact { font-size: clamp(1.8rem, 5vw, 2.8rem); }
+
+      .center {
+        grid-column: 1;
+      }
+
+      .right-col {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+
+      .bottom-row {
+        grid-column: 1;
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .conversation-textarea {
+        min-height: 250px;
+      }
     }
 
-    @media (max-width: 480px) {
-      body { padding: 8px; }
-      .bento {
-        grid-template-columns: 1fr;
+    /* ========================================
+       RESPONSIVE — 600px
+       ======================================== */
+    @media (max-width: 600px) {
+      body {
+        padding: 8px;
+      }
+
+      .dashboard {
         gap: 10px;
       }
-      .c1, .c2, .c3, .c4, .c1x2, .c2x2 {
-        grid-column: span 1;
-        grid-row: span 1;
-        min-height: 140px;
+
+      .left-col {
+        grid-template-columns: 1fr;
       }
-      .card { padding: 20px; }
-      .photo-card { padding: 0 !important; }
-      .t-brand { font-size: 1.6rem; }
-      .t-impact { font-size: 1.8rem; }
-      .t-phrase { font-size: 1.4rem; }
-      .message-form {
+
+      .right-col {
+        grid-template-columns: 1fr;
+      }
+
+      .bottom-row {
+        grid-template-columns: 1fr;
+      }
+
+      .conversation-wrap {
+        padding: 20px;
+      }
+
+      .conversation-textarea {
+        min-height: 200px;
+      }
+
+      .conversation-footer {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .subscribe-form {
         flex-direction: column;
       }
-      .message-form button {
-        padding: 14px 20px;
+
+      .card {
+        padding: 20px;
+      }
+
+      .photo-card {
+        padding: 0 !important;
+        min-height: 180px;
       }
     }
   </style>
 </head>
 <body>
 
-<div class="bento">
+<div class="dashboard">
 
   <!-- ==========================================
-       ROW 1: Name | Phrase | Garden photo
+       TOP BAR
        ========================================== -->
-
-  <!-- 1. Name card (2x1, green, r-0 — brutalist anchor) -->
-  <div class="card c2 card--green r-0">
-    <h1 class="t-brand">All Vital Organics</h1>
-  </div>
-
-  <!-- 2. Phrase card (1x1, cream) -->
-  <div class="card c1 card--cream">
-    <span class="t-phrase t-dark">take care of yourself.</span>
-  </div>
-
-  <!-- 3. Garden photo (1x1) -->
-  <div class="card c1 photo-card">
-    <img src="img/garden.jpg" alt="Aerial view of a garden path" loading="lazy">
+  <div class="top-bar">
+    <span class="top-bar-brand">All Vital Organics</span>
+    <a href="https://instagram.com/allvitalorganics" target="_blank" class="top-bar-link">instagram</a>
   </div>
 
   <!-- ==========================================
-       ROW 2: Belief | Stats | Journal
+       LEFT BENTO COLUMN
        ========================================== -->
+  <div class="left-col">
 
-  <!-- 4. Belief card (2x1, glass) -->
-  <div class="card c2 card--glass">
-    <p class="t-serif-i" style="font-size:clamp(1.2rem, 2.5vw, 1.5rem);line-height:1.4;">Take care of what you make.<br>Take care of what you consume.</p>
+    <!-- 1. Name card — brutalist anchor, border-radius: 0 -->
+    <div class="card card--green card--name">
+      <span class="name-title">All Vital Organics</span>
+    </div>
+
+    <!-- 2. About card -->
+    <div class="card card--dark">
+      <p class="about-text">I make things in health and wellness. First time for all of it. Seoul + New York.</p>
+    </div>
+
+    <!-- 3. Phrase card — cream -->
+    <div class="card card--cream">
+      <span class="phrase-text" style="color:#1A1A1A;">take care of yourself.</span>
+    </div>
+
+    <!-- 4. Photo card — garden -->
+    <div class="card photo-card">
+      <img src="img/garden.jpg" alt="Aerial view of a garden" loading="lazy">
+    </div>
+
+    <!-- 5. Phrase card — green -->
+    <div class="card card--green">
+      <span class="phrase-text">don't worry about it.</span>
+    </div>
+
   </div>
 
-  <!-- 5. Stats card (1x1, dark) -->
-  <div class="card c1 card--dark border-left-green">
-    <div class="stats-stack t-label">
-      <span>3 brands</span>
-      <span>2 cities</span>
-      <span>1 person</span>
+  <!-- ==========================================
+       CENTER — CONVERSATION
+       ========================================== -->
+  <div class="center">
+    <div class="conversation-wrap" id="conversationWrap">
+      <span class="conversation-label">say something.</span>
+      <textarea
+        class="conversation-textarea"
+        id="conversationTextarea"
+        placeholder="feel free. I'm here. april 15, 2026. currently in KST (seoul)."
+      ></textarea>
+      <div class="conversation-footer">
+        <button class="conversation-send" onclick="sendConversation()">send</button>
+        <span class="conversation-note">goes to alex@allvitalorganics.com &middot; I reply to everything</span>
+      </div>
+      <div class="conversation-sent" id="conversationSent">sent. take care of yourself.</div>
     </div>
   </div>
 
-  <!-- 6. Journal entry (1x1, dark) -->
-  <div class="card c1 card--dark">
-    <div class="journal-date">2026.03.18</div>
-    <p class="t-body t-journal">version 9. the first 8 taught me what this one needed to be.</p>
-  </div>
-
   <!-- ==========================================
-       ROW 3: Collagen | Phrase | Smoothie | Haenyeo (1x2 tall)
+       RIGHT BENTO COLUMN
        ========================================== -->
+  <div class="right-col">
 
-  <!-- 7. Making: collagen (1x1, dark) -->
-  <div class="card c1 card--dark">
-    <p class="t-serif" style="font-size:16px;line-height:1.5;">a collagen supplement at the clinical dose</p>
-    <span class="brand-label">sensitive ones</span>
-  </div>
-
-  <!-- 8. Phrase card (1x1, green) -->
-  <div class="card c1 card--green">
-    <span class="t-phrase t-cream">don't worry about it.</span>
-  </div>
-
-  <!-- 9. Making: smoothie (1x1, glass) -->
-  <div class="card c1 card--glass">
-    <p class="t-serif" style="font-size:16px;line-height:1.5;">a synbiotic smoothie in a pouch.</p>
-    <span class="brand-label">pheeew</span>
-  </div>
-
-  <!-- 10. Haenyeo photo (1x2 tall) -->
-  <div class="card c1x2 photo-card">
-    <img src="img/haenyeo.jpg" alt="Haenyeo sea diver, Jeju" loading="lazy">
-  </div>
-
-  <!-- ==========================================
-       ROW 4: Journal long | Impact "calm." | (haenyeo continues)
-       ========================================== -->
-
-  <!-- 11. Journal entry long (2x1, glass) -->
-  <div class="card c2 card--glass">
-    <div class="journal-date">2026.02.04</div>
-    <p class="t-body t-journal">visited the factory in naju. it smelled like mango and industrial cleaner. the line manager showed me the filling machine with the same pride my dad showed me his garden. some things are universal.</p>
-  </div>
-
-  <!-- 12. Impact word "calm." (1x1, dark) -->
-  <div class="card c1 card--dark" style="display:flex;align-items:center;justify-content:center;">
-    <span class="t-impact">calm.</span>
-  </div>
-
-  <!-- ==========================================
-       ROW 5: About (2x2) | Message card (2x1)
-       ========================================== -->
-
-  <!-- 13. About card (2x2, green) -->
-  <div class="card c2x2 card--green" style="justify-content:flex-start;">
-    <h2 class="t-serif" style="font-size:clamp(1.4rem, 3vw, 2rem);margin-bottom:20px;">Alex Kim</h2>
-    <div class="about-bio t-body">
-      <p>I make things in health and wellness. Not because I figured it all out, but because I couldn't find what I was looking for.</p>
-      <p>I started All Vital Organics to build supplements and functional foods that I'd actually trust. Clinical doses, transparent sourcing, no filler claims. Three brands now: Sensitive Ones, Pheeew, and 008.</p>
-      <p>I work between Seoul and Jeju. Most days I'm in a factory, or arguing about label margins, or trying to make something that doesn't exist yet.</p>
-      <p class="t-label" style="color:#666;margin-top:8px;">CEO & Founder, All Vital Organics</p>
+    <!-- 1. Making: collagen -->
+    <div class="card card--glass">
+      <p class="making-title">a collagen supplement at the clinical dose</p>
+      <span class="making-label">sensitive ones</span>
     </div>
-  </div>
 
-  <!-- 14. Message / DM card (2x1, glass) — NEW -->
-  <div class="card c2 card--glass">
-    <p class="t-phrase" style="color:#52B788;margin-bottom:12px;">say something.</p>
-    <div class="message-form" id="messageForm">
-      <input type="text" id="messageInput" placeholder="type here...">
-      <button onclick="sendMessage()">send &rarr;</button>
+    <!-- 2. Making: smoothie -->
+    <div class="card card--dark">
+      <p class="making-title">a synbiotic smoothie in a pouch</p>
+      <span class="making-label">pheeew</span>
     </div>
-    <p class="t-label" style="color:#444;margin-top:8px;">goes straight to alex@allvitalorganics.com</p>
+
+    <!-- 3. Making: room -->
+    <div class="card card--green">
+      <p class="making-title">a room worth being in</p>
+      <span class="making-label">008</span>
+    </div>
+
+    <!-- 4. Photo card — haenyeo -->
+    <div class="card photo-card">
+      <img src="img/haenyeo.jpg" alt="Haenyeo sea diver, Jeju" loading="lazy">
+    </div>
+
+    <!-- 5. Stats card -->
+    <div class="card card--dark border-left-green">
+      <span class="stats-text">3 brands / 2 cities / 1 person</span>
+    </div>
+
   </div>
 
   <!-- ==========================================
-       ROW 6: (about continues) | Phrase "drive safe" | Making: room
+       BOTTOM BENTO ROW
        ========================================== -->
+  <div class="bottom-row">
 
-  <!-- 15. Phrase card (1x1, dark) -->
-  <div class="card c1 card--dark">
-    <span class="t-phrase t-green">drive safe.</span>
-  </div>
+    <!-- 1. Phrase — drive safe -->
+    <div class="card card--dark bottom-card" style="display:flex;align-items:center;justify-content:center;">
+      <span class="phrase-text" style="color:#52B788;">drive safe.</span>
+    </div>
 
-  <!-- 16. Making: room (1x1, glass) -->
-  <div class="card c1 card--glass">
-    <p class="t-serif" style="font-size:16px;line-height:1.5;">a room worth being in.</p>
-    <span class="brand-label">008</span>
-  </div>
+    <!-- 2. Subscribe -->
+    <div class="card card--glass bottom-card">
+      <span class="subscribe-label">a letter, sometimes.</span>
+      <form class="subscribe-form" onsubmit="return false;">
+        <input type="email" placeholder="your@email.com">
+        <button type="submit">subscribe</button>
+      </form>
+    </div>
 
-  <!-- ==========================================
-       ROW 7: FORRA photo | Phrase "it's all good" | Subscribe (2x1)
-       ========================================== -->
+    <!-- 3. Photo — matcha -->
+    <div class="card photo-card bottom-card">
+      <img src="img/matcha.jpg" alt="Matcha" loading="lazy">
+    </div>
 
-  <!-- 17. FORRA photo (1x1) -->
-  <div class="card c1 photo-card">
-    <img src="img/forra.jpg" alt="Fungal alchemy, green glass" loading="lazy">
-  </div>
+    <!-- 4. Belief + footer -->
+    <div class="card card--dark bottom-card" style="justify-content:space-between;">
+      <p class="belief-text">take care of what you make.<br>take care of what you consume.</p>
+      <div>
+        <div class="footer-meta" style="margin-bottom:6px;">&copy; 2026 All Vital Organics</div>
+        <a href="https://instagram.com/allvitalorganics" target="_blank" class="footer-link">@allvitalorganics</a>
+      </div>
+    </div>
 
-  <!-- 18. Phrase card (1x1, cream) -->
-  <div class="card c1 card--cream" style="display:flex;align-items:center;justify-content:center;">
-    <span class="t-phrase t-dark">it's all good.</span>
-  </div>
-
-  <!-- 19. Subscribe card (2x1, dark) -->
-  <div class="card c2 card--dark">
-    <p class="t-serif" style="font-size:clamp(1.2rem, 2.5vw, 1.5rem);margin-bottom:4px;">a letter, sometimes.</p>
-    <p class="t-label t-muted" style="margin-bottom:0;">no spam. just updates when something ships.</p>
-    <form class="subscribe-form" onsubmit="return false;">
-      <input type="email" placeholder="your@email.com">
-      <button type="submit">subscribe</button>
-    </form>
-  </div>
-
-  <!-- ==========================================
-       ROW 8: Journal | Matcha photo | Shelves photo (2x1)
-       ========================================== -->
-
-  <!-- 20. Journal entry (1x1, dark) -->
-  <div class="card c1 card--dark">
-    <div class="journal-date">2026.01.22</div>
-    <p class="t-body t-journal">the label is 2mm off-center. nobody will notice. I'll know.</p>
-  </div>
-
-  <!-- 21. Matcha photo (1x1) -->
-  <div class="card c1 photo-card">
-    <img src="img/matcha.jpg" alt="This is the matcha place I was telling you about" loading="lazy">
-  </div>
-
-  <!-- 22. Shelves photo (2x1) -->
-  <div class="card c2 photo-card">
-    <img src="img/shelves.jpg" alt="Green products on shelves" loading="lazy">
-  </div>
-
-  <!-- ==========================================
-       ROW 9: Phrase "just smile" | Making: secret | Impact "honest." | Footer
-       ========================================== -->
-
-  <!-- 23. Phrase card (1x1, dark) -->
-  <div class="card c1 card--dark">
-    <span class="t-phrase t-green">just smile sometimes.</span>
-  </div>
-
-  <!-- 24. Making: secret (1x1, dark, dashed) -->
-  <div class="card c1 card--dark" style="border:2px dashed rgba(255,255,255,0.15);">
-    <p class="t-body t-muted" style="font-size:13px;line-height:1.6;">something else. not ready to talk about it yet.</p>
-  </div>
-
-  <!-- 25. Impact word "honest." (1x1, green) -->
-  <div class="card c1 card--green" style="display:flex;align-items:center;justify-content:center;">
-    <span class="t-impact" style="color:#F5F0E8;">honest.</span>
-  </div>
-
-  <!-- 26. Footer card (1x1, dark) -->
-  <div class="card c1 card--dark" style="justify-content:flex-end;">
-    <div class="t-label t-muted" style="margin-bottom:6px;">&copy; 2026 All Vital Organics</div>
-    <a href="https://instagram.com" target="_blank" class="footer-link">@allvitalorganics</a>
   </div>
 
 </div>
@@ -600,14 +665,12 @@
   // IntersectionObserver — staggered reveal
   // ==========================================
   (function() {
-    const cards = document.querySelectorAll('.card');
-    let delay = 0;
-
-    const observer = new IntersectionObserver(function(entries) {
+    var cards = document.querySelectorAll('.card');
+    var observer = new IntersectionObserver(function(entries) {
       entries.forEach(function(entry) {
         if (entry.isIntersecting) {
-          const el = entry.target;
-          const d = parseFloat(el.dataset.delay) || 0;
+          var el = entry.target;
+          var d = parseFloat(el.dataset.delay) || 0;
           setTimeout(function() {
             el.classList.add('is-visible');
           }, d);
@@ -617,30 +680,41 @@
     }, { threshold: 0.1 });
 
     cards.forEach(function(card, i) {
-      card.dataset.delay = i * 40;
+      card.dataset.delay = i * 30;
       observer.observe(card);
     });
   })();
 
   // ==========================================
-  // Message / DM — mailto trigger
+  // Conversation — send message
   // ==========================================
-  function sendMessage() {
-    var input = document.getElementById('messageInput');
-    var msg = input.value.trim();
+  function sendConversation() {
+    var textarea = document.getElementById('conversationTextarea');
+    var msg = textarea.value.trim();
     if (!msg) return;
+
     var mailto = 'mailto:alex@allvitalorganics.com?subject=' +
       encodeURIComponent('Message from AVO site') +
       '&body=' + encodeURIComponent(msg);
     window.location.href = mailto;
-    input.value = '';
+
+    // Show sent confirmation
+    var sentEl = document.getElementById('conversationSent');
+    textarea.value = '';
+    textarea.style.opacity = '0';
+    sentEl.classList.add('show');
+
+    setTimeout(function() {
+      sentEl.classList.remove('show');
+      textarea.style.opacity = '1';
+    }, 2000);
   }
 
-  // Allow Enter key to send
-  document.getElementById('messageInput').addEventListener('keydown', function(e) {
-    if (e.key === 'Enter') {
+  // Allow Cmd/Ctrl+Enter to send
+  document.getElementById('conversationTextarea').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) {
       e.preventDefault();
-      sendMessage();
+      sendConversation();
     }
   });
 </script>
