@@ -70,6 +70,63 @@
       letter-spacing: 0.02em;
     }
 
+    .top-bar-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .top-bar-socials {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .top-bar-socials a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #6DBE47;
+      text-decoration: none;
+      transition: opacity 0.2s ease;
+    }
+
+    .top-bar-socials a:hover {
+      opacity: 0.7;
+    }
+
+    .top-bar-socials a svg {
+      width: 16px;
+      height: 16px;
+      fill: currentColor;
+    }
+
+    .top-bar-legal {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .top-bar-legal a {
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      font-size: 10px;
+      color: #555;
+      text-decoration: none;
+      letter-spacing: 0.03em;
+      cursor: pointer;
+      transition: color 0.2s ease;
+    }
+
+    .top-bar-legal a:hover {
+      color: #6DBE47;
+    }
+
+    .top-bar-legal .legal-dot {
+      font-size: 10px;
+      color: #555;
+      user-select: none;
+    }
+
     .top-bar-link {
       font-family: 'Space Grotesk', system-ui, sans-serif;
       font-size: 11px;
@@ -80,6 +137,125 @@
 
     .top-bar-link:hover {
       color: #6DBE47;
+    }
+
+    /* ========================================
+       LEGAL OVERLAY
+       ======================================== */
+    .legal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(11, 23, 7, 0.98);
+      z-index: 9999;
+      display: none;
+      align-items: flex-start;
+      justify-content: center;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .legal-overlay.active {
+      display: flex;
+    }
+
+    .legal-overlay-content {
+      max-width: 640px;
+      width: 100%;
+      padding: 48px;
+      position: relative;
+    }
+
+    .legal-overlay-close {
+      position: fixed;
+      top: 24px;
+      right: 32px;
+      font-size: 24px;
+      color: #666;
+      cursor: pointer;
+      background: none;
+      border: none;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      transition: color 0.2s ease;
+      z-index: 10000;
+      line-height: 1;
+    }
+
+    .legal-overlay-close:hover {
+      color: #F5F0E8;
+    }
+
+    .legal-overlay-updated {
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      font-size: 10px;
+      color: #555;
+      margin-bottom: 24px;
+      letter-spacing: 0.03em;
+    }
+
+    .legal-overlay-title {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 20px;
+      font-weight: 400;
+      color: #F5F0E8;
+      margin-bottom: 24px;
+    }
+
+    .legal-overlay-body {
+      font-family: 'Times New Roman', Times, Georgia, serif;
+      font-size: 14px;
+      line-height: 1.8;
+      color: #999;
+    }
+
+    .legal-overlay-body p {
+      margin-bottom: 16px;
+    }
+
+    .legal-overlay-body ul {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 16px;
+    }
+
+    .legal-overlay-body ul li {
+      padding-left: 16px;
+      position: relative;
+      margin-bottom: 8px;
+    }
+
+    .legal-overlay-body ul li::before {
+      content: '\2014';
+      position: absolute;
+      left: 0;
+      color: #555;
+    }
+
+    /* Footer legal links */
+    .footer-legal {
+      margin-top: 6px;
+    }
+
+    .footer-legal a {
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      font-size: 9px;
+      color: #555;
+      text-decoration: none;
+      letter-spacing: 0.03em;
+      cursor: pointer;
+      transition: color 0.2s ease;
+    }
+
+    .footer-legal a:hover {
+      color: #6DBE47;
+    }
+
+    .footer-legal .legal-dot {
+      font-size: 9px;
+      color: #555;
+      user-select: none;
     }
 
     /* ========================================
@@ -599,7 +775,35 @@
        ========================================== -->
   <div class="top-bar">
     <span class="top-bar-brand">All Vital Organics</span>
-    <a href="https://instagram.com/allvitalorganics" target="_blank" class="top-bar-link">instagram</a>
+    <div class="top-bar-right">
+      <div class="top-bar-socials">
+        <!-- Instagram -->
+        <a href="https://instagram.com/allvitalorganics" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.17.054 1.97.24 2.43.403a4.07 4.07 0 011.523.99 4.07 4.07 0 01.99 1.524c.163.46.349 1.26.403 2.428.058 1.267.07 1.647.07 4.85s-.012 3.584-.07 4.85c-.054 1.17-.24 1.97-.403 2.43a4.07 4.07 0 01-.99 1.523 4.07 4.07 0 01-1.524.99c-.46.163-1.26.349-2.428.403-1.267.058-1.647.07-4.85.07s-3.584-.012-4.85-.07c-1.17-.054-1.97-.24-2.43-.403a4.07 4.07 0 01-1.523-.99 4.07 4.07 0 01-.99-1.524c-.163-.46-.349-1.26-.403-2.428C2.175 15.584 2.163 15.204 2.163 12s.012-3.584.07-4.85c.054-1.17.24-1.97.403-2.43a4.07 4.07 0 01.99-1.523A4.07 4.07 0 015.15 2.636c.46-.163 1.26-.349 2.428-.403C8.845 2.175 9.225 2.163 12 2.163zM12 0C8.741 0 8.333.014 7.053.072 5.775.13 4.903.333 4.14.63a5.88 5.88 0 00-2.126 1.384A5.88 5.88 0 00.63 4.14C.333 4.903.13 5.775.072 7.053.014 8.333 0 8.741 0 12s.014 3.668.072 4.948c.058 1.277.261 2.149.558 2.912a5.88 5.88 0 001.384 2.126 5.88 5.88 0 002.126 1.384c.763.297 1.635.5 2.913.558C8.333 23.986 8.741 24 12 24s3.668-.014 4.948-.072c1.277-.058 2.149-.261 2.912-.558a5.88 5.88 0 002.126-1.384 5.88 5.88 0 001.384-2.126c.297-.763.5-1.635.558-2.913C23.986 15.668 24 15.259 24 12s-.014-3.668-.072-4.948c-.058-1.277-.261-2.149-.558-2.912a5.88 5.88 0 00-1.384-2.126A5.88 5.88 0 0019.86.63C19.097.333 18.225.13 16.948.072 15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        </a>
+        <!-- YouTube -->
+        <a href="#" target="_blank" rel="noopener" aria-label="YouTube">
+          <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.546 12 3.546 12 3.546s-7.505 0-9.377.504A3.016 3.016 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.504 9.376.504 9.376.504s7.505 0 9.377-.504a3.016 3.016 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+        </a>
+        <!-- Threads -->
+        <a href="#" target="_blank" rel="noopener" aria-label="Threads">
+          <svg viewBox="0 0 24 24"><path d="M12.186 24h-.007C5.965 24 2.634 20.199 2.634 14.89V9.11C2.634 3.8 5.965 0 12.186 0h.007c3.725 0 6.308 1.388 7.898 3.07l-2.458 2.588c-1.073-1.1-2.712-1.862-5.44-1.862-3.898 0-5.591 2.87-5.591 6.313v5.782c0 3.444 1.693 6.313 5.591 6.313 2.037 0 3.478-.432 4.513-1.35.948-.84 1.555-2.097 1.667-3.694h-5.77v-3.2h9.4c.07.53.108 1.102.108 1.718 0 3.028-.877 5.4-2.537 7.03C18.244 23.09 15.698 24 12.186 24z"/></svg>
+        </a>
+        <!-- TikTok -->
+        <a href="#" target="_blank" rel="noopener" aria-label="TikTok">
+          <svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+        </a>
+      </div>
+      <div class="top-bar-legal">
+        <a onclick="openLegal('terms')">Terms</a>
+        <span class="legal-dot">&middot;</span>
+        <a onclick="openLegal('privacy')">Privacy</a>
+        <span class="legal-dot">&middot;</span>
+        <a onclick="openLegal('cookies')">Cookies</a>
+        <span class="legal-dot">&middot;</span>
+        <a onclick="openLegal('disclaimer')">Disclaimer</a>
+      </div>
+    </div>
   </div>
 
   <!-- LEFT COLUMN: 6 cards in column 1, rows 2-7 -->
@@ -670,6 +874,13 @@
     <div>
       <div class="footer-meta" style="margin-bottom:4px;">&copy; 2026 All Vital Organics</div>
       <a href="https://instagram.com/allvitalorganics" target="_blank" class="footer-link">@allvitalorganics</a>
+      <div class="footer-legal">
+        <a onclick="openLegal('terms')">Terms</a>
+        <span class="legal-dot">&middot;</span>
+        <a onclick="openLegal('privacy')">Privacy</a>
+        <span class="legal-dot">&middot;</span>
+        <a onclick="openLegal('disclaimer')">Disclaimer</a>
+      </div>
     </div>
   </div>
 
@@ -732,7 +943,141 @@
       sendConversation();
     }
   });
+
+  // ==========================================
+  // Legal overlays
+  // ==========================================
+  function openLegal(page) {
+    var overlay = document.getElementById('legal-' + page);
+    if (overlay) {
+      overlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+  }
+
+  function closeLegal(page) {
+    var overlay = document.getElementById('legal-' + page);
+    if (overlay) {
+      overlay.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+  }
+
+  // Close on Escape key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      var overlays = document.querySelectorAll('.legal-overlay.active');
+      overlays.forEach(function(o) {
+        o.classList.remove('active');
+      });
+      document.body.style.overflow = '';
+    }
+  });
+
+  // Close on backdrop click
+  document.querySelectorAll('.legal-overlay').forEach(function(overlay) {
+    overlay.addEventListener('click', function(e) {
+      if (e.target === overlay) {
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
+  });
 </script>
+
+<!-- ==========================================
+     LEGAL OVERLAYS
+     ========================================== -->
+
+<!-- Terms & Conditions -->
+<div class="legal-overlay" id="legal-terms">
+  <div class="legal-overlay-content">
+    <button class="legal-overlay-close" onclick="closeLegal('terms')">&times;</button>
+    <div class="legal-overlay-updated">Last updated: April 15, 2026</div>
+    <h2 class="legal-overlay-title">Terms &amp; Conditions</h2>
+    <div class="legal-overlay-body">
+      <ul>
+        <li>All Vital Organics is a personal editorial and venture platform owned by Alex Kim.</li>
+        <li>Content on this site is for informational and personal expression purposes only.</li>
+        <li>No content constitutes professional medical, financial, legal, or business advice.</li>
+        <li>"All Vital Organics," "AVO," and associated branding are trademarks of Alex Kim.</li>
+        <li>Third-party links (Sensitive Ones, Pheeew, 008, Sensitive Ones Agency) are separate legal entities with their own terms.</li>
+        <li>Use of this website constitutes acceptance of these terms.</li>
+        <li>Alex Kim reserves the right to modify these terms at any time.</li>
+        <li>Governing law: [State TBD], United States.</li>
+        <li>Contact: alex@allvitalorganics.co</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Privacy Policy -->
+<div class="legal-overlay" id="legal-privacy">
+  <div class="legal-overlay-content">
+    <button class="legal-overlay-close" onclick="closeLegal('privacy')">&times;</button>
+    <div class="legal-overlay-updated">Last updated: April 15, 2026</div>
+    <h2 class="legal-overlay-title">Privacy Policy</h2>
+    <div class="legal-overlay-body">
+      <p><strong style="color:#F5F0E8;">What we collect</strong></p>
+      <ul>
+        <li>Email addresses (if subscribed)</li>
+        <li>Messages sent via the conversation feature</li>
+        <li>Standard web analytics (cookies, IP, browser)</li>
+      </ul>
+      <p><strong style="color:#F5F0E8;">How we use it</strong></p>
+      <ul>
+        <li>To respond to messages</li>
+        <li>Send occasional newsletters</li>
+        <li>Improve the website</li>
+      </ul>
+      <p>We do NOT sell personal information.</p>
+      <p><strong style="color:#F5F0E8;">Third-party services:</strong> email provider (TBD), analytics (TBD).</p>
+      <p><strong style="color:#F5F0E8;">Data retention:</strong> messages and emails retained until deletion is requested.</p>
+      <p><strong style="color:#F5F0E8;">Your rights:</strong> request access, correction, or deletion of your data by emailing alex@allvitalorganics.co.</p>
+      <p><strong style="color:#F5F0E8;">CCPA:</strong> California residents have additional rights under the California Consumer Privacy Act.</p>
+      <p><strong style="color:#F5F0E8;">Children:</strong> this site is not directed at children under 13.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Cookie Policy -->
+<div class="legal-overlay" id="legal-cookies">
+  <div class="legal-overlay-content">
+    <button class="legal-overlay-close" onclick="closeLegal('cookies')">&times;</button>
+    <div class="legal-overlay-updated">Last updated: April 15, 2026</div>
+    <h2 class="legal-overlay-title">Cookie Policy</h2>
+    <div class="legal-overlay-body">
+      <ul>
+        <li>This site uses minimal cookies for analytics and basic functionality.</li>
+        <li>No advertising cookies.</li>
+        <li>No third-party tracking cookies.</li>
+        <li>You can disable cookies in your browser settings.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Disclaimer -->
+<div class="legal-overlay" id="legal-disclaimer">
+  <div class="legal-overlay-content">
+    <button class="legal-overlay-close" onclick="closeLegal('disclaimer')">&times;</button>
+    <div class="legal-overlay-updated">Last updated: April 15, 2026</div>
+    <h2 class="legal-overlay-title">Disclaimer</h2>
+    <div class="legal-overlay-body">
+      <p>The content provided on this website and associated channels is provided for informational and personal expression purposes only. It is not a substitute for professional advice and consultation, including professional medical, nutritional, financial, or legal advice.</p>
+      <p>All Vital Organics is a personal editorial platform. Alex Kim is not a licensed medical professional, nutritionist, dietitian, financial advisor, or attorney. Opinions, observations, and experiences shared are personal views only.</p>
+      <p>Products and brands referenced on this site (including but not limited to Sensitive Ones, Pheeew, and 008) are separate legal entities. All Vital Organics does not make health claims on behalf of these products. For product-specific claims and disclaimers, please refer to each brand's own website and labeling.</p>
+      <p>You understand and agree that All Vital Organics and Alex Kim shall not be liable for any claim, loss, or damage arising out of the use of, or reliance upon, any content or information on this website.</p>
+      <p>Any mention of third-party products, services, or brands does not constitute an endorsement unless explicitly stated.</p>
+      <p>For specific health concerns, consult a qualified healthcare professional. For financial decisions, consult a licensed financial advisor.</p>
+
+      <h2 class="legal-overlay-title" style="margin-top:40px;">Affiliate Disclosure</h2>
+      <p>Some links on this website may be affiliate links. This means All Vital Organics may earn a small commission if you make a purchase through these links, at no additional cost to you.</p>
+      <p>All Vital Organics only recommends products and services that are genuinely believed to be of value. Affiliate relationships do not influence editorial content or opinions.</p>
+      <p>This disclosure is made in accordance with the Federal Trade Commission's guidelines on endorsements and testimonials.</p>
+    </div>
+  </div>
+</div>
 
 </body>
 </html>
