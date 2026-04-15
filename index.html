@@ -82,8 +82,8 @@
        COLUMNS
        ======================================== */
     .left-col {
-      display: flex;
-      flex-direction: column;
+      display: grid;
+      grid-template-rows: repeat(5, 1fr);
       gap: 12px;
     }
 
@@ -93,19 +93,23 @@
     }
 
     .right-col {
-      display: flex;
-      flex-direction: column;
+      display: grid;
+      grid-template-rows: repeat(5, 1fr);
       gap: 12px;
     }
 
     /* ========================================
-       BOTTOM ROW
+       BOTTOM ROW — matches center width system
        ======================================== */
     .bottom-row {
       grid-column: 1 / -1;
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 12px;
+    }
+
+    .bottom-card {
+      min-height: 0;
     }
 
     /* ========================================
@@ -501,6 +505,7 @@
       .left-col {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto;
         gap: 12px;
       }
 
@@ -511,6 +516,7 @@
       .right-col {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto;
         gap: 12px;
       }
 
@@ -648,7 +654,7 @@
   <div class="right-col">
 
     <!-- 1. sensitive ones brand -- magenta -->
-    <a href="https://www.forsensitiveones.co" target="_blank" rel="noopener" class="card card--magenta" style="text-decoration:none;cursor:pointer">
+    <a href="https://www.forsensitiveones.com" target="_blank" rel="noopener" class="card card--magenta" style="text-decoration:none;cursor:pointer">
       <p class="making-title">inner care for sensitive problems</p>
       <span class="making-label" style="color:rgba(255,255,255,0.5)">sensitive ones</span>
     </a>
@@ -674,11 +680,6 @@
     <!-- 5. Photo card -- haenyeo -->
     <div class="card photo-card">
       <img src="img/haenyeo.jpg" alt="Haenyeo sea diver, Jeju" loading="lazy">
-    </div>
-
-    <!-- 5. Phrase card -->
-    <div class="card card--dark">
-      <span class="phrase-text" style="color:#6DBE47">it's all good.</span>
     </div>
 
   </div>
