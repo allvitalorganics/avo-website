@@ -1,539 +1,741 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>All Vital Organics</title>
-<meta name="description" content="Design, food, health, and the things between.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-<style>
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All Vital Organics</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=DM+Serif+Display&family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+  <style>
+    /* ========================================
+       RESET & BASE
+       ======================================== */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-:root {
-  --cream: #F5F0E8;
-  --warm-white: #FAFAF7;
-  --charcoal: #1A1A1A;
-  --muted: #888888;
-  --muted-light: #AAAAAA;
-  --olive: #4A5D23;
-  --border: #E0DBD2;
-  --serif: 'DM Serif Display', serif;
-  --sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-}
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
 
-html {
-  scroll-behavior: smooth;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #0A0A0A;
+      color: #F5F0E8;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
 
-body {
-  font-family: var(--sans);
-  background: var(--cream);
-  color: var(--charcoal);
-  line-height: 1.7;
-  font-size: 16px;
-  overflow-x: hidden;
-}
+    /* Subtle noise texture overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.03;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='256' height='256' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+      background-size: 256px 256px;
+      pointer-events: none;
+      z-index: 9999;
+    }
 
-/* ===== HERO ===== */
-.hero {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 80px 40px;
-  position: relative;
-}
+    /* ========================================
+       TYPOGRAPHY
+       ======================================== */
+    .font-serif {
+      font-family: 'DM Serif Display', serif;
+    }
 
-.hero-name {
-  font-family: var(--serif);
-  font-size: clamp(2.6rem, 5.5vw, 4.8rem);
-  color: var(--charcoal);
-  line-height: 1.1;
-  letter-spacing: 0.5px;
-  margin-bottom: 32px;
-}
+    .font-hand {
+      font-family: 'Caveat', cursive;
+    }
 
-.hero-line {
-  font-size: clamp(0.95rem, 1.8vw, 1.15rem);
-  color: var(--muted);
-  font-weight: 300;
-  letter-spacing: 0.3px;
-  font-style: italic;
-}
+    .font-sans {
+      font-family: 'Inter', sans-serif;
+    }
 
-.hero-scroll-hint {
-  position: absolute;
-  bottom: 48px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 1px;
-  height: 40px;
-  background: var(--border);
-  opacity: 0.5;
-  animation: scrollPulse 2.5s ease-in-out infinite;
-}
+    /* ========================================
+       HERO
+       ======================================== */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 60px 24px;
+      position: relative;
+      background: linear-gradient(160deg, #0A0A0A 0%, #0D1F17 30%, #1B4332 60%, #0D1F17 80%, #0A0A0A 100%);
+    }
 
-@keyframes scrollPulse {
-  0%, 100% { opacity: 0.2; height: 30px; }
-  50% { opacity: 0.5; height: 40px; }
-}
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 200px;
+      background: linear-gradient(to bottom, transparent, #0A0A0A);
+      pointer-events: none;
+    }
 
-/* ===== SECTION SPACING ===== */
-.section {
-  padding: 120px 40px;
-  max-width: 720px;
-  margin: 0 auto;
-}
+    .hero-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(3rem, 8vw, 7rem);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      color: #F5F0E8;
+      margin-bottom: 40px;
+    }
 
-.section-wide {
-  padding: 120px 40px;
-  max-width: 880px;
-  margin: 0 auto;
-}
+    .hero-belief {
+      font-family: 'Caveat', cursive;
+      font-size: clamp(1.4rem, 3vw, 2.2rem);
+      color: #95D5B2;
+      line-height: 1.6;
+      max-width: 500px;
+      opacity: 0.9;
+    }
 
-/* ===== DIVIDER ===== */
-.divider {
-  width: 32px;
-  height: 1px;
-  background: var(--border);
-  margin: 0 auto;
-}
+    .hero-mark {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      background: #52B788;
+      border-radius: 50%;
+      margin-bottom: 32px;
+      animation: pulse-glow 3s ease-in-out infinite;
+    }
 
-/* ===== SECTION LABEL ===== */
-.section-label {
-  font-family: var(--serif);
-  font-size: clamp(1.6rem, 3vw, 2.2rem);
-  color: var(--charcoal);
-  margin-bottom: 56px;
-  line-height: 1.2;
-}
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(82, 183, 136, 0.4); }
+      50% { box-shadow: 0 0 20px 8px rgba(82, 183, 136, 0.15); }
+    }
 
-/* ===== JOURNAL ===== */
-.journal-entries {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-}
+    /* ========================================
+       BENTO GRID
+       ======================================== */
+    .bento-container {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 16px 80px;
+    }
 
-.journal-entry {
-  padding: 36px 0;
-  border-bottom: 1px solid var(--border);
-}
+    .bento {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
 
-.journal-entry:first-child {
-  border-top: 1px solid var(--border);
-}
+    /* Card spanning classes */
+    .card-2x1 { grid-column: span 2; }
+    .card-1x2 { grid-row: span 2; }
+    .card-2x2 { grid-column: span 2; grid-row: span 2; }
+    .card-3x1 { grid-column: span 3; }
+    .card-4x1 { grid-column: span 4; }
 
-.journal-meta {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 14px;
-}
+    /* ========================================
+       GLASS CARD
+       ======================================== */
+    .glass-card {
+      background: rgba(255, 255, 255, 0.04);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 20px;
+      padding: 28px;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s ease, transform 0.3s ease;
+    }
 
-.journal-date {
-  font-size: 12px;
-  color: var(--muted-light);
-  font-weight: 400;
-  letter-spacing: 0.5px;
-}
+    .glass-card:hover {
+      border-color: rgba(255, 255, 255, 0.12);
+      transform: translateY(-2px);
+    }
 
-.journal-tag {
-  font-size: 11px;
-  color: var(--olive);
-  font-weight: 500;
-  letter-spacing: 1px;
-  text-transform: lowercase;
-}
+    /* Green-tinted glass variant */
+    .glass-card--green {
+      background: rgba(45, 106, 79, 0.12);
+      border-color: rgba(82, 183, 136, 0.15);
+    }
 
-.journal-text {
-  font-size: clamp(1.05rem, 1.6vw, 1.2rem);
-  color: var(--charcoal);
-  font-weight: 300;
-  line-height: 1.75;
-  max-width: 600px;
-}
+    .glass-card--green:hover {
+      border-color: rgba(82, 183, 136, 0.25);
+    }
 
-/* ===== CURRENTLY MAKING ===== */
-.making-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-}
+    /* Deep green solid variant */
+    .glass-card--solid {
+      background: #1B4332;
+      border-color: rgba(82, 183, 136, 0.2);
+    }
 
-.making-item {
-  padding: 40px 0;
-  border-bottom: 1px solid var(--border);
-}
+    /* Subtle inner glow on some cards */
+    .glass-card--glow::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle at 30% 30%, rgba(82, 183, 136, 0.06), transparent 60%);
+      pointer-events: none;
+    }
 
-.making-item:first-child {
-  border-top: 1px solid var(--border);
-}
+    /* ========================================
+       CARD CONTENT STYLES
+       ======================================== */
 
-.making-description {
-  font-size: clamp(1.1rem, 1.8vw, 1.3rem);
-  color: var(--charcoal);
-  font-weight: 300;
-  line-height: 1.65;
-  margin-bottom: 8px;
-}
+    /* Journal entry cards */
+    .journal-date {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #666;
+      margin-bottom: 14px;
+    }
 
-.making-brand {
-  font-size: 13px;
-  color: var(--muted-light);
-  font-weight: 400;
-  letter-spacing: 0.3px;
-}
+    .journal-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.3rem, 2vw, 1.8rem);
+      line-height: 1.3;
+      color: #F5F0E8;
+      margin-bottom: 12px;
+    }
 
-.making-mystery {
-  font-style: italic;
-  color: var(--muted);
-}
+    .journal-body {
+      font-size: 14px;
+      line-height: 1.7;
+      color: rgba(245, 240, 232, 0.6);
+    }
 
-/* ===== ABOUT ===== */
-.about-text {
-  font-size: clamp(1rem, 1.5vw, 1.12rem);
-  color: var(--charcoal);
-  font-weight: 300;
-  line-height: 2;
-  max-width: 580px;
-}
+    /* Currently making cards */
+    .making-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #52B788;
+      margin-bottom: 16px;
+    }
 
-/* ===== SUBSCRIBE ===== */
-.subscribe-section {
-  padding: 100px 40px 120px;
-  max-width: 480px;
-  margin: 0 auto;
-}
+    .making-text {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.1rem, 1.8vw, 1.5rem);
+      line-height: 1.4;
+      color: #F5F0E8;
+    }
 
-.subscribe-heading {
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: clamp(1.4rem, 2.5vw, 1.8rem);
-  color: var(--charcoal);
-  margin-bottom: 28px;
-  font-weight: 400;
-}
+    .making-brand {
+      font-size: 12px;
+      color: #666;
+      margin-top: 16px;
+    }
 
-.subscribe-form {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 12px;
-}
+    /* Signature phrase cards (post-it note feel) */
+    .phrase-card {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 120px;
+      text-align: center;
+    }
 
-.subscribe-form input {
-  flex: 1;
-  padding: 13px 18px;
-  font-size: 14px;
-  font-family: var(--sans);
-  font-weight: 300;
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  background: var(--warm-white);
-  color: var(--charcoal);
-  outline: none;
-  transition: border-color 0.3s ease;
-}
+    .phrase-text {
+      font-family: 'Caveat', cursive;
+      font-size: clamp(1.5rem, 2.5vw, 2rem);
+      color: #95D5B2;
+      line-height: 1.3;
+    }
 
-.subscribe-form input::placeholder {
-  color: var(--muted-light);
-}
+    /* Quote / impact word cards */
+    .impact-word {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(3rem, 6vw, 5rem);
+      color: rgba(245, 240, 232, 0.08);
+      line-height: 1;
+      position: absolute;
+      bottom: 20px;
+      right: 28px;
+    }
 
-.subscribe-form input:focus {
-  border-color: var(--olive);
-}
+    .impact-word--visible {
+      color: #F5F0E8;
+      position: relative;
+      bottom: auto;
+      right: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 160px;
+    }
 
-.subscribe-form button {
-  padding: 13px 24px;
-  font-size: 13px;
-  font-weight: 500;
-  font-family: var(--sans);
-  background: var(--olive);
-  color: var(--cream);
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  letter-spacing: 0.3px;
-  transition: opacity 0.3s ease;
-  white-space: nowrap;
-}
+    /* Stats card */
+    .stat-line {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      color: rgba(245, 240, 232, 0.5);
+      line-height: 2;
+    }
 
-.subscribe-form button:hover {
-  opacity: 0.85;
-}
+    .stat-number {
+      font-weight: 900;
+      font-size: 18px;
+      color: #52B788;
+    }
 
-/* ===== FOOTER ===== */
-.footer {
-  padding: 48px 40px;
-  border-top: 1px solid var(--border);
-}
+    /* Nature / image placeholder cards */
+    .nature-card {
+      background: linear-gradient(135deg, #1B4332 0%, #2D6A4F 40%, #52B788 100%);
+      border: none;
+      min-height: 200px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-start;
+    }
 
-.footer-inner {
-  max-width: 720px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+    .nature-card .placeholder-label {
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.4);
+    }
 
-.footer-copy {
-  font-size: 12px;
-  color: var(--muted-light);
-  font-weight: 300;
-}
+    /* Photo placeholder cards */
+    .photo-placeholder {
+      background: linear-gradient(180deg, rgba(27, 67, 50, 0.3) 0%, rgba(10, 10, 10, 0.8) 100%);
+      min-height: 240px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
 
-.footer-ig {
-  font-size: 12px;
-  color: var(--muted-light);
-  text-decoration: none;
-  font-weight: 400;
-  transition: color 0.3s ease;
-}
+    .photo-placeholder .photo-caption {
+      font-size: 12px;
+      color: rgba(245, 240, 232, 0.4);
+      font-style: italic;
+    }
 
-.footer-ig:hover {
-  color: var(--olive);
-}
+    /* About card */
+    .about-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.6rem;
+      margin-bottom: 6px;
+    }
 
-/* ===== SCROLL REVEAL ===== */
-.reveal {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
-}
+    .about-role {
+      font-size: 12px;
+      color: #52B788;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
 
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
+    .about-bio {
+      font-size: 14px;
+      line-height: 1.8;
+      color: rgba(245, 240, 232, 0.6);
+    }
 
-.reveal-stagger {
-  opacity: 0;
-  transform: translateY(16px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
+    /* Subscribe card */
+    .subscribe-heading {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.4rem;
+      margin-bottom: 8px;
+    }
 
-.reveal-stagger.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
+    .subscribe-sub {
+      font-size: 13px;
+      color: rgba(245, 240, 232, 0.4);
+      margin-bottom: 20px;
+    }
 
-/* ===== RESPONSIVE ===== */
-@media (max-width: 768px) {
-  .hero { padding: 60px 28px; }
-  .section { padding: 80px 28px; }
-  .section-wide { padding: 80px 28px; }
-  .subscribe-section { padding: 80px 28px 100px; }
+    .subscribe-form {
+      display: flex;
+      gap: 8px;
+    }
 
-  .subscribe-form {
-    flex-direction: column;
-  }
+    .subscribe-input {
+      flex: 1;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 12px 16px;
+      color: #F5F0E8;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
 
-  .subscribe-form input,
-  .subscribe-form button {
-    width: 100%;
-  }
+    .subscribe-input::placeholder {
+      color: #666;
+    }
 
-  .footer { padding: 36px 28px; }
+    .subscribe-input:focus {
+      border-color: #52B788;
+    }
 
-  .footer-inner {
-    flex-direction: column;
-    gap: 8px;
-    text-align: center;
-  }
-}
+    .subscribe-btn {
+      background: #2D6A4F;
+      color: #F5F0E8;
+      border: none;
+      border-radius: 12px;
+      padding: 12px 24px;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.2s;
+      white-space: nowrap;
+    }
 
-@media (max-width: 480px) {
-  .hero { padding: 48px 20px; }
-  .section { padding: 64px 20px; }
-  .section-wide { padding: 64px 20px; }
-  .subscribe-section { padding: 64px 20px 80px; }
-  .journal-entry { padding: 28px 0; }
-  .making-item { padding: 28px 0; }
-}
-</style>
+    .subscribe-btn:hover {
+      background: #52B788;
+    }
+
+    /* Annotation — small handwriting notes */
+    .annotation {
+      font-family: 'Caveat', cursive;
+      font-size: 16px;
+      color: rgba(149, 213, 178, 0.5);
+      position: absolute;
+      transform: rotate(-3deg);
+    }
+
+    /* Footer card */
+    .footer-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 28px;
+    }
+
+    .footer-text {
+      font-size: 12px;
+      color: #666;
+    }
+
+    .footer-link {
+      font-size: 12px;
+      color: #52B788;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-link:hover {
+      color: #95D5B2;
+    }
+
+    /* ========================================
+       RESPONSIVE
+       ======================================== */
+    @media (max-width: 768px) {
+      .bento {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+
+      .card-2x2 {
+        grid-column: span 2;
+        grid-row: span 1;
+      }
+
+      .card-3x1,
+      .card-4x1 {
+        grid-column: span 2;
+      }
+
+      .glass-card {
+        padding: 22px;
+        border-radius: 16px;
+      }
+
+      .hero-title {
+        font-size: clamp(2.4rem, 10vw, 4rem);
+      }
+
+      .hero {
+        min-height: 80vh;
+        padding: 40px 20px;
+      }
+
+      .subscribe-form {
+        flex-direction: column;
+      }
+
+      .bento-container {
+        padding: 0 12px 60px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .bento {
+        grid-template-columns: 1fr;
+      }
+
+      .card-2x1,
+      .card-2x2,
+      .card-3x1,
+      .card-4x1 {
+        grid-column: span 1;
+      }
+
+      .card-1x2 {
+        grid-row: span 1;
+      }
+
+      .hero {
+        min-height: 70vh;
+      }
+    }
+
+    /* ========================================
+       ANIMATION (subtle fade-in)
+       ======================================== */
+    .glass-card {
+      animation: card-in 0.6s ease-out both;
+    }
+
+    @keyframes card-in {
+      from {
+        opacity: 0;
+        transform: translateY(16px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Stagger the cards */
+    .glass-card:nth-child(1)  { animation-delay: 0.05s; }
+    .glass-card:nth-child(2)  { animation-delay: 0.10s; }
+    .glass-card:nth-child(3)  { animation-delay: 0.15s; }
+    .glass-card:nth-child(4)  { animation-delay: 0.20s; }
+    .glass-card:nth-child(5)  { animation-delay: 0.25s; }
+    .glass-card:nth-child(6)  { animation-delay: 0.30s; }
+    .glass-card:nth-child(7)  { animation-delay: 0.35s; }
+    .glass-card:nth-child(8)  { animation-delay: 0.40s; }
+    .glass-card:nth-child(9)  { animation-delay: 0.45s; }
+    .glass-card:nth-child(10) { animation-delay: 0.50s; }
+    .glass-card:nth-child(11) { animation-delay: 0.55s; }
+    .glass-card:nth-child(12) { animation-delay: 0.60s; }
+    .glass-card:nth-child(13) { animation-delay: 0.65s; }
+    .glass-card:nth-child(14) { animation-delay: 0.70s; }
+    .glass-card:nth-child(15) { animation-delay: 0.75s; }
+    .glass-card:nth-child(16) { animation-delay: 0.80s; }
+    .glass-card:nth-child(17) { animation-delay: 0.85s; }
+    .glass-card:nth-child(18) { animation-delay: 0.90s; }
+    .glass-card:nth-child(19) { animation-delay: 0.95s; }
+    .glass-card:nth-child(20) { animation-delay: 1.00s; }
+  </style>
 </head>
 <body>
 
-<!-- HERO -->
-<section class="hero">
-  <h1 class="hero-name reveal">All Vital<br>Organics</h1>
-  <p class="hero-line reveal">Design, food, health, and the things between.</p>
-  <p class="reveal" style="font-family:var(--serif);font-style:italic;font-size:clamp(0.95rem,1.4vw,1.1rem);color:var(--muted);margin-top:48px;max-width:400px;line-height:1.7;opacity:0.7">Take care of what you make.<br>Take care of what you consume.</p>
-  <div class="hero-scroll-hint"></div>
-</section>
+  <!-- ============================================
+       HERO
+       ============================================ -->
+  <section class="hero">
+    <div class="hero-mark"></div>
+    <h1 class="hero-title">All Vital<br>Organics</h1>
+    <p class="hero-belief">take care of what you make.<br>take care of what you consume.</p>
+  </section>
 
-<div class="divider"></div>
+  <!-- ============================================
+       BENTO GRID
+       ============================================ -->
+  <div class="bento-container">
+    <div class="bento">
 
-<!-- THE JOURNAL -->
-<div class="section-wide">
-  <h2 class="section-label reveal">The Journal</h2>
+      <!-- ROW 1 ================================= -->
 
-  <div class="journal-entries">
-
-    <div class="journal-entry reveal-stagger">
-      <div class="journal-meta">
-        <span class="journal-date">Apr 2, 2026</span>
-        <span class="journal-tag">process</span>
+      <!-- Journal: Origin story -->
+      <div class="glass-card glass-card--glow card-2x1">
+        <div class="journal-date">Journal &mdash; 001</div>
+        <div class="journal-title">Why I started this</div>
+        <div class="journal-body">
+          I kept reading ingredient lists and not recognizing anything. Not one thing. So I started making my own. Not to sell. Just to know what I was putting in my body. That was the beginning.
+        </div>
+        <span class="annotation" style="bottom: 16px; right: 24px; transform: rotate(-2deg);">the honest version</span>
       </div>
-      <p class="journal-text">spent 14 months on a formula. changed it again yesterday. the bioavailability data from the new peptide source was too good to ignore, even if it means another round with the manufacturer.</p>
-    </div>
 
-    <div class="journal-entry reveal-stagger">
-      <div class="journal-meta">
-        <span class="journal-date">Mar 19, 2026</span>
-        <span class="journal-tag">taste</span>
+      <!-- Phrase: take care of yourself -->
+      <div class="glass-card glass-card--green phrase-card">
+        <div class="phrase-text">take care of yourself</div>
       </div>
-      <p class="journal-text">tried 6 different greens. none of them tasted like anything I'd actually drink. went back to the drawing board. if I wouldn't have it every morning, I can't ask anyone else to.</p>
-    </div>
 
-    <div class="journal-entry reveal-stagger">
-      <div class="journal-meta">
-        <span class="journal-date">Mar 8, 2026</span>
-        <span class="journal-tag">design</span>
+      <!-- Stats card -->
+      <div class="glass-card">
+        <div class="journal-date">At a glance</div>
+        <div class="stat-line"><span class="stat-number">3</span> brands.</div>
+        <div class="stat-line"><span class="stat-number">2</span> cities.</div>
+        <div class="stat-line"><span class="stat-number">1</span> person.</div>
+        <span class="annotation" style="bottom: 12px; right: 20px; transform: rotate(2deg);">for now</span>
       </div>
-      <p class="journal-text">the label is 2mm off-center and it's bothering me more than it should. sent it back. the printer probably thinks I'm unreasonable. maybe I am.</p>
-    </div>
 
-    <div class="journal-entry reveal-stagger">
-      <div class="journal-meta">
-        <span class="journal-date">Feb 22, 2026</span>
-        <span class="journal-tag">thought</span>
+      <!-- ROW 2 ================================= -->
+
+      <!-- Nature gradient card -->
+      <div class="glass-card nature-card">
+        <div class="placeholder-label">Jeju &mdash; morning light</div>
       </div>
-      <p class="journal-text">visited the factory in naju. it smelled like mango and industrial cleaner. watched them run a batch. there's something grounding about seeing the thing you designed on a screen actually being made by actual people in an actual building.</p>
-    </div>
 
-    <div class="journal-entry reveal-stagger">
-      <div class="journal-meta">
-        <span class="journal-date">Feb 9, 2026</span>
-        <span class="journal-tag">process</span>
+      <!-- Currently making: collagen -->
+      <div class="glass-card">
+        <div class="making-label">Currently making</div>
+        <div class="making-text">a collagen supplement at the clinical dose</div>
+        <div class="making-brand">Pheeew</div>
       </div>
-      <p class="journal-text">most supplement brands use a quarter of the clinical dose and hope nobody checks. we use the full dose and it costs three times as much. still figuring out how to make the math work without raising the price to something unreasonable.</p>
-    </div>
 
-  </div>
-</div>
+      <!-- Impact word -->
+      <div class="glass-card card-2x1" style="display: flex; align-items: center; justify-content: center; min-height: 180px;">
+        <div class="font-serif" style="font-size: clamp(3.5rem, 7vw, 6rem); color: rgba(245,240,232,0.07); line-height: 1; user-select: none;">calm.</div>
+      </div>
 
-<div class="divider"></div>
+      <!-- ROW 3 ================================= -->
 
-<!-- CURRENTLY MAKING -->
-<div class="section-wide">
-  <h2 class="section-label reveal">Currently Making</h2>
+      <!-- About card (large) -->
+      <div class="glass-card glass-card--glow card-2x2">
+        <div class="about-name">Alex Kim</div>
+        <div class="about-role">Founder &amp; CEO</div>
+        <div class="about-bio">
+          I grew up between Seoul and New York. My mom made everything from scratch&mdash;banchan, soaps, tinctures. That stuck with me. I studied what goes into the things we consume every day, and most of it didn't make sense.
+          <br><br>
+          All Vital Organics is the parent. Underneath it: brands that each solve one problem honestly. No filler. No marketing-first formulations. Just the thing, done right.
+          <br><br>
+          I care about ingredients the way some people care about typography. Every single one has to earn its place.
+        </div>
+      </div>
 
-  <div class="making-grid">
+      <!-- Phrase: don't worry about it -->
+      <div class="glass-card phrase-card" style="background: rgba(45, 106, 79, 0.08);">
+        <div class="phrase-text">don't worry about it</div>
+      </div>
 
-    <div class="making-item reveal-stagger">
-      <p class="making-description">a collagen supplement that uses the actual clinical dose</p>
-      <span class="making-brand">sensitive ones</span>
-    </div>
+      <!-- Currently making: synbiotic -->
+      <div class="glass-card glass-card--green">
+        <div class="making-label">Currently making</div>
+        <div class="making-text">a synbiotic smoothie in a pouch</div>
+        <div class="making-brand">Sensitive Ones</div>
+      </div>
 
-    <div class="making-item reveal-stagger">
-      <p class="making-description">a synbiotic smoothie in a pouch</p>
-      <span class="making-brand">pheeew</span>
-    </div>
+      <!-- ROW 4 ================================= -->
 
-    <div class="making-item reveal-stagger">
-      <p class="making-description">a room worth being in</p>
-      <span class="making-brand">008</span>
-    </div>
+      <!-- Photo placeholder: haenyeo -->
+      <div class="glass-card photo-placeholder card-1x2" style="background: linear-gradient(180deg, rgba(27,67,50,0.4) 0%, rgba(10,10,10,0.9) 100%);">
+        <div class="photo-caption">haenyeo divers, Jeju Island</div>
+      </div>
 
-    <div class="making-item reveal-stagger">
-      <p class="making-description making-mystery">something else. not ready to talk about it yet.</p>
-    </div>
+      <!-- Journal: Sourcing -->
+      <div class="glass-card card-2x1">
+        <div class="journal-date">Journal &mdash; 002</div>
+        <div class="journal-title">Sourcing is the whole thing</div>
+        <div class="journal-body">
+          Flew to Jeju to meet the seaweed farmers. Drove through the banana plantations. Sat with the fishermen. If you don't know where it comes from, you don't know what it is. That's not a slogan. That's just true.
+        </div>
+      </div>
 
-  </div>
-</div>
+      <!-- Phrase: drive safe -->
+      <div class="glass-card phrase-card" style="background: rgba(255,255,255,0.02);">
+        <div class="phrase-text">drive safe</div>
+      </div>
 
-<div class="divider"></div>
+      <!-- ROW 5 ================================= -->
 
-<!-- ABOUT -->
-<div class="section">
-  <div class="reveal">
-    <h2 class="section-label">About</h2>
-    <p class="about-text">I make things in health and wellness. Supplements, food, experiences. None of this is perfect &mdash; it's my first time for all of it. I'm not a doctor or a scientist or a guru. Just someone who cares about what goes into a product and how it looks when it gets to you.</p>
-    <p class="about-text" style="margin-top:16px">Based between Seoul and New York. My friends say I'm easy to open up to. I think that's because I don't judge &mdash; I just listen. I want this space to feel like that too. No performance. No pressure. Just calm.</p>
-    <p class="about-text" style="margin-top:16px;color:var(--muted);font-style:italic">Come sit down. It's okay.</p>
-  </div>
-</div>
+      <!-- Currently making: room -->
+      <div class="glass-card glass-card--solid">
+        <div class="making-label" style="color: #95D5B2;">Currently making</div>
+        <div class="making-text">a room worth being in</div>
+        <div class="making-brand" style="color: rgba(245,240,232,0.3);">AVO Studio</div>
+      </div>
 
-<div class="divider"></div>
+      <!-- Impact word: honest -->
+      <div class="glass-card" style="display: flex; align-items: center; justify-content: center; min-height: 140px;">
+        <div class="font-serif" style="font-size: clamp(2.8rem, 5vw, 4.5rem); color: #2D6A4F; line-height: 1; user-select: none;">honest.</div>
+      </div>
 
-<!-- WORDS -->
-<div class="section-wide" style="text-align:center;padding:64px 24px">
-  <div class="reveal" style="max-width:480px;margin:0 auto">
-    <p style="font-family:var(--serif);font-size:clamp(1.3rem,2.5vw,1.8rem);color:var(--charcoal);line-height:2.2;font-weight:400">
-      take care of yourself.<br>
-      <span style="opacity:0.5">don't worry about it.</span><br>
-      drive safe.<br>
-      <span style="opacity:0.5">just smile sometimes.</span><br>
-      it's a great day.<br>
-      <span style="opacity:0.5">be happy, it's another day.</span><br>
-      it's all good.
-    </p>
-  </div>
-</div>
+      <!-- Journal: What we won't do -->
+      <div class="glass-card card-2x1 glass-card--glow">
+        <div class="journal-date">Journal &mdash; 003</div>
+        <div class="journal-title">What we won't do</div>
+        <div class="journal-body">
+          We won't put "proprietary blend" on a label. We won't hide doses. We won't use influencers who haven't tried the product for at least 3 months. We won't launch something just because the market wants it. The list of things we won't do is longer than the list of things we will.
+        </div>
+      </div>
 
-<div class="divider"></div>
+      <!-- ROW 6 ================================= -->
 
-<!-- SUBSCRIBE -->
-<div class="subscribe-section">
-  <div class="reveal">
-    <p class="subscribe-heading">A letter, sometimes.</p>
-    <form class="subscribe-form" onsubmit="handleSubscribe(event)">
-      <input type="email" placeholder="your email" required aria-label="Email address">
-      <button type="submit">Subscribe</button>
-    </form>
-  </div>
-</div>
+      <!-- Nature card 2 -->
+      <div class="glass-card nature-card card-2x1" style="background: linear-gradient(160deg, #1B4332 0%, #0D1F17 50%, #2D6A4F 100%); min-height: 160px;">
+        <div class="placeholder-label">pine forest, somewhere quiet</div>
+      </div>
 
-<!-- FOOTER -->
-<footer class="footer">
-  <div class="footer-inner">
-    <span class="footer-copy">&copy; 2026 All Vital Organics</span>
-    <a href="https://instagram.com/allvitalorganics" target="_blank" rel="noopener" class="footer-ig">Instagram</a>
-  </div>
-</footer>
+      <!-- Phrase: it's all good -->
+      <div class="glass-card glass-card--green phrase-card">
+        <div class="phrase-text">it's all good</div>
+      </div>
 
-<script>
-// Scroll reveal
-const revealObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry, i) => {
-      if (entry.isIntersecting) {
-        const delay = entry.target.classList.contains('reveal-stagger')
-          ? Array.from(entry.target.parentElement.children).indexOf(entry.target) * 80
-          : 0;
-        setTimeout(() => {
-          entry.target.classList.add('visible');
-        }, delay);
-        revealObserver.unobserve(entry.target);
-      }
-    });
-  },
-  { threshold: 0.12, rootMargin: '0px 0px -30px 0px' }
-);
+      <!-- Currently making: secret -->
+      <div class="glass-card">
+        <div class="making-label">Currently making</div>
+        <div class="making-text">something else. not ready yet.</div>
+        <div class="making-brand">&mdash;</div>
+      </div>
 
-document.querySelectorAll('.reveal, .reveal-stagger').forEach(el => revealObserver.observe(el));
+      <!-- ROW 7 ================================= -->
 
-// Subscribe handler
-function handleSubscribe(e) {
-  e.preventDefault();
-  const input = e.target.querySelector('input');
-  const btn = e.target.querySelector('button');
-  btn.textContent = 'Thank you';
-  btn.style.opacity = '0.7';
-  input.value = '';
-  setTimeout(() => {
-    btn.textContent = 'Subscribe';
-    btn.style.opacity = '';
-  }, 3000);
-}
-</script>
+      <!-- Journal: The name -->
+      <div class="glass-card">
+        <div class="journal-date">Journal &mdash; 004</div>
+        <div class="journal-title">The name</div>
+        <div class="journal-body">
+          "All Vital Organics." It sounds clinical on purpose. No cute brand name. No abstract metaphor. It says what it is. Everything here is vital. Everything here is organic. That's the promise, right in the name.
+        </div>
+      </div>
+
+      <!-- Subscribe card -->
+      <div class="glass-card card-2x1 glass-card--green">
+        <div class="subscribe-heading">Stay close</div>
+        <div class="subscribe-sub">Journal entries, new launches, and the occasional recipe. Nothing else.</div>
+        <form class="subscribe-form" onsubmit="event.preventDefault();">
+          <input type="email" class="subscribe-input" placeholder="your email" aria-label="Email address">
+          <button type="submit" class="subscribe-btn">Subscribe</button>
+        </form>
+      </div>
+
+      <!-- Photo placeholder: banana farm -->
+      <div class="glass-card photo-placeholder" style="background: linear-gradient(135deg, rgba(45,106,79,0.2) 0%, rgba(10,10,10,0.85) 100%); min-height: 180px;">
+        <div class="photo-caption">banana plantation, early morning</div>
+      </div>
+
+      <!-- ROW 8 ================================= -->
+
+      <!-- Annotation card -->
+      <div class="glass-card phrase-card" style="min-height: 100px;">
+        <div class="font-hand" style="font-size: 1.1rem; color: rgba(149,213,178,0.4); text-align: center; line-height: 1.6;">
+          if you're reading this,<br>you're probably the kind of person<br>who reads ingredient lists too.
+        </div>
+      </div>
+
+      <!-- Footer card -->
+      <div class="glass-card card-3x1 footer-card">
+        <span class="footer-text">&copy; 2026 All Vital Organics</span>
+        <a href="https://instagram.com" class="footer-link" target="_blank" rel="noopener">Instagram &nearr;</a>
+      </div>
+
+    </div><!-- /.bento -->
+  </div><!-- /.bento-container -->
 
 </body>
 </html>
