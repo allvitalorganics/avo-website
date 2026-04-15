@@ -158,7 +158,7 @@
        SPECIAL: Name card — brutalist anchor
        ======================================== */
     .card--name {
-      border-radius: 0 !important;
+      /* removed — all cards use consistent 16px radius */
     }
 
     /* ========================================
@@ -549,7 +549,7 @@
 
     <!-- 2. About card -->
     <div class="card card--dark">
-      <p class="about-text">I make things in health and wellness. First time for all of it. Seoul + New York.</p>
+      <p class="about-text">I make things in health and wellness.</p>
     </div>
 
     <!-- 3. Phrase card — cream -->
@@ -574,7 +574,6 @@
        ========================================== -->
   <div class="center">
     <div class="conversation-wrap" id="conversationWrap">
-      <span class="conversation-label">say something.</span>
       <textarea
         class="conversation-textarea"
         id="conversationTextarea"
@@ -582,7 +581,7 @@
       ></textarea>
       <div class="conversation-footer">
         <button class="conversation-send" onclick="sendConversation()">send</button>
-        <span class="conversation-note">goes to alex@allvitalorganics.com &middot; I reply to everything</span>
+        <span class="conversation-note">goes to alex@allvitalorganics.com</span>
       </div>
       <div class="conversation-sent" id="conversationSent">sent. take care of yourself.</div>
     </div>
@@ -595,13 +594,13 @@
 
     <!-- 1. Making: collagen -->
     <div class="card card--glass">
-      <p class="making-title">a collagen supplement at the clinical dose</p>
+      <p class="making-title">inner care for sensitive problems</p>
       <span class="making-label">sensitive ones</span>
     </div>
 
     <!-- 2. Making: smoothie -->
     <div class="card card--dark">
-      <p class="making-title">a synbiotic smoothie in a pouch</p>
+      <p class="making-title">the smoothie your gut asked for</p>
       <span class="making-label">pheeew</span>
     </div>
 
@@ -616,9 +615,9 @@
       <img src="img/haenyeo.jpg" alt="Haenyeo sea diver, Jeju" loading="lazy">
     </div>
 
-    <!-- 5. Stats card -->
-    <div class="card card--dark border-left-green">
-      <span class="stats-text">3 brands / 2 cities / 1 person</span>
+    <!-- 5. Phrase card -->
+    <div class="card card--dark">
+      <span class="phrase-text" style="color:#52B788">it's all good.</span>
     </div>
 
   </div>
