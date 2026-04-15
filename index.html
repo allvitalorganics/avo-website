@@ -688,8 +688,27 @@
         height: auto;
       }
 
-      /* Top bar spans full */
-      .top-bar { grid-column: 1 / 3; grid-row: auto; }
+      /* Top bar — wrap content, taller */
+      .top-bar {
+        grid-column: 1 / 3;
+        grid-row: auto;
+        flex-wrap: wrap;
+        height: auto;
+        padding: 8px 12px;
+        gap: 6px;
+      }
+
+      .top-bar-brand {
+        font-size: 12px;
+      }
+
+      .top-bar-right {
+        gap: 10px;
+      }
+
+      .top-bar-legal {
+        display: none; /* hide legal links on tablet — accessible via footer */
+      }
 
       /* Left cards: 2-col grid as pairs */
       .left-1 { grid-column: 1; grid-row: auto; }
@@ -734,7 +753,34 @@
         grid-template-columns: 1fr;
       }
 
-      .top-bar,
+      .top-bar {
+        grid-column: 1;
+        grid-row: auto;
+        justify-content: center;
+        gap: 8px;
+      }
+
+      .top-bar-brand {
+        font-size: 11px;
+      }
+
+      .top-bar-right {
+        gap: 8px;
+      }
+
+      .top-bar-socials {
+        gap: 8px;
+      }
+
+      .top-bar-socials a svg {
+        width: 14px;
+        height: 14px;
+      }
+
+      .top-bar-legal {
+        display: none;
+      }
+
       .left-1, .left-2, .left-3, .left-4, .left-5, .left-6,
       .center-letter, .center-sub,
       .right-1, .right-2, .right-3, .right-4, .right-5, .right-6 {
@@ -762,6 +808,15 @@
       .photo-card {
         padding: 0 !important;
         min-height: 180px;
+      }
+
+      .legal-overlay-content {
+        padding: 24px 16px;
+      }
+
+      .legal-overlay-close {
+        top: 12px;
+        right: 12px;
       }
     }
   </style>
