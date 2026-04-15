@@ -38,11 +38,12 @@
     .dashboard {
       display: grid;
       grid-template-columns: 1fr 2.5fr 1fr;
-      grid-template-rows: auto 1fr auto;
+      /* 6 content rows: top bar fixed, 5 equal rows for sidebar cards, bottom = same as one card row */
+      grid-template-rows: 36px repeat(5, 1fr);
       gap: 12px;
       max-width: 1400px;
       margin: 0 auto;
-      height: calc(100vh - 24px); /* fit exactly one screen */
+      height: calc(100vh - 24px);
     }
 
     /* ========================================
@@ -50,11 +51,11 @@
        ======================================== */
     .top-bar {
       grid-column: 1 / -1;
+      grid-row: 1;
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding: 0 12px;
-      height: 36px;
       background: #111;
       border-radius: 16px;
     }
@@ -83,29 +84,33 @@
        COLUMNS
        ======================================== */
     .left-col {
+      grid-row: 2 / 7; /* span all 5 content rows */
       display: grid;
       grid-template-rows: repeat(5, 1fr);
       gap: 12px;
     }
 
     .center {
+      grid-row: 2 / 6; /* span rows 2-5 (4 rows), leaving row 6 for bottom */
       display: flex;
       flex-direction: column;
     }
 
     .right-col {
+      grid-row: 2 / 7; /* span all 5 content rows */
       display: grid;
       grid-template-rows: repeat(5, 1fr);
       gap: 12px;
     }
 
     /* ========================================
-       BOTTOM ROW — matches center width system
+       BOTTOM ROW — sits in row 6, matches center width
        ======================================== */
     .bottom-row {
-      grid-column: 1 / -1;
+      grid-column: 2; /* only the center column */
+      grid-row: 6;
       display: grid;
-      grid-template-columns: 1fr 1.25fr 1.25fr 1fr;
+      grid-template-columns: repeat(4, 1fr);
       gap: 12px;
     }
 
