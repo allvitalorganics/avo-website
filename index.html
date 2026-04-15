@@ -4,30 +4,21 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>All Vital Organics</title>
-<meta name="description" content="Health and wellness editorial and venture platform founded by Alex Kim.">
+<meta name="description" content="Design, food, health, and the things between.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-/* ===== RESET & BASE ===== */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
-  --bg: #FAFAF7;
-  --bg-warm: #F5F0E8;
+  --cream: #F5F0E8;
+  --warm-white: #FAFAF7;
   --charcoal: #1A1A1A;
-  --charcoal-light: #2C2C2C;
+  --muted: #888888;
+  --muted-light: #AAAAAA;
   --olive: #4A5D23;
-  --olive-light: #5E7A2E;
-  --olive-dim: rgba(74, 93, 35, 0.08);
-  --text: #1A1A1A;
-  --text-mid: #4A4A4A;
-  --text-light: #7A7A7A;
   --border: #E0DBD2;
-  --border-light: #EDE9E1;
-  --so-accent: #B8255A;
-  --ph-accent: #6B8E23;
-  --eight-accent: #1B4D3E;
   --serif: 'DM Serif Display', serif;
   --sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 }
@@ -40,73 +31,11 @@ html {
 
 body {
   font-family: var(--sans);
-  background: var(--bg);
-  color: var(--text);
+  background: var(--cream);
+  color: var(--charcoal);
   line-height: 1.7;
   font-size: 16px;
   overflow-x: hidden;
-}
-
-/* ===== FIXED NAV ===== */
-.nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 100;
-  padding: 20px 40px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  transition: background 0.4s ease, box-shadow 0.4s ease, padding 0.4s ease;
-}
-
-.nav.scrolled {
-  background: rgba(250, 250, 247, 0.95);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  box-shadow: 0 1px 0 var(--border-light);
-  padding: 14px 40px;
-}
-
-.nav-brand {
-  font-family: var(--serif);
-  font-size: 18px;
-  color: var(--charcoal);
-  text-decoration: none;
-  letter-spacing: 1px;
-}
-
-.nav-subscribe {
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--charcoal);
-  text-decoration: none;
-  letter-spacing: 0.5px;
-  padding: 8px 20px;
-  border: 1px solid var(--charcoal);
-  border-radius: 24px;
-  transition: all 0.3s ease;
-}
-
-.nav-subscribe:hover {
-  background: var(--charcoal);
-  color: var(--bg);
-}
-
-/* ===== SECTIONS ===== */
-section {
-  padding: 0 40px;
-}
-
-.section-inner {
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.section-wide {
-  max-width: 1000px;
-  margin: 0 auto;
 }
 
 /* ===== HERO ===== */
@@ -117,362 +46,203 @@ section {
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 120px 40px 80px;
+  padding: 80px 40px;
+  position: relative;
 }
 
-.hero-title {
+.hero-name {
   font-family: var(--serif);
-  font-size: clamp(2.8rem, 6vw, 5.5rem);
+  font-size: clamp(2.6rem, 5.5vw, 4.8rem);
   color: var(--charcoal);
   line-height: 1.1;
-  letter-spacing: 1px;
-  margin-bottom: 28px;
-}
-
-.hero-subtitle {
-  font-size: clamp(1rem, 2vw, 1.2rem);
-  color: var(--text-mid);
-  font-weight: 300;
-  line-height: 1.7;
-  max-width: 520px;
-  margin-bottom: 48px;
-  letter-spacing: 0.2px;
-}
-
-.hero-cta {
-  display: inline-block;
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--bg);
-  background: var(--charcoal);
-  text-decoration: none;
-  padding: 14px 36px;
-  border-radius: 28px;
   letter-spacing: 0.5px;
-  transition: all 0.3s ease;
+  margin-bottom: 32px;
 }
 
-.hero-cta:hover {
-  background: var(--olive);
-  transform: translateY(-1px);
+.hero-line {
+  font-size: clamp(0.95rem, 1.8vw, 1.15rem);
+  color: var(--muted);
+  font-weight: 300;
+  letter-spacing: 0.3px;
+  font-style: italic;
 }
 
-.hero-scroll {
+.hero-scroll-hint {
   position: absolute;
-  bottom: 40px;
+  bottom: 48px;
   left: 50%;
   transform: translateX(-50%);
-  color: var(--text-light);
-  font-size: 12px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
+  width: 1px;
+  height: 40px;
+  background: var(--border);
   opacity: 0.5;
-  animation: fadeFloat 3s ease-in-out infinite;
+  animation: scrollPulse 2.5s ease-in-out infinite;
 }
 
-@keyframes fadeFloat {
-  0%, 100% { opacity: 0.3; transform: translateX(-50%) translateY(0); }
-  50% { opacity: 0.6; transform: translateX(-50%) translateY(6px); }
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.2; height: 30px; }
+  50% { opacity: 0.5; height: 40px; }
+}
+
+/* ===== SECTION SPACING ===== */
+.section {
+  padding: 120px 40px;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.section-wide {
+  padding: 120px 40px;
+  max-width: 880px;
+  margin: 0 auto;
 }
 
 /* ===== DIVIDER ===== */
 .divider {
-  width: 40px;
+  width: 32px;
   height: 1px;
   background: var(--border);
   margin: 0 auto;
 }
 
-/* ===== ABOUT AVO ===== */
-.about-avo {
-  padding-top: 120px;
-  padding-bottom: 120px;
-}
-
-.about-avo .section-label {
-  font-size: 11px;
-  font-weight: 600;
-  color: var(--olive);
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  margin-bottom: 24px;
-}
-
-.about-avo p {
-  font-size: 1.15rem;
-  color: var(--text-mid);
-  line-height: 1.9;
-  font-weight: 300;
-}
-
-/* ===== PORTFOLIO ===== */
-.portfolio {
-  padding-top: 100px;
-  padding-bottom: 120px;
-  background: var(--bg-warm);
-}
-
-.portfolio-header {
-  text-align: center;
-  margin-bottom: 64px;
-}
-
-.portfolio-header .section-label {
-  font-size: 11px;
-  font-weight: 600;
-  color: var(--olive);
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  margin-bottom: 16px;
-}
-
-.portfolio-header h2 {
+/* ===== SECTION LABEL ===== */
+.section-label {
   font-family: var(--serif);
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
   color: var(--charcoal);
-  line-height: 1.2;
-}
-
-.portfolio-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-  max-width: 900px;
-  margin: 0 auto;
-}
-
-.portfolio-card {
-  background: var(--bg);
-  border-radius: 12px;
-  padding: 36px 32px;
-  border: 1px solid var(--border-light);
-  position: relative;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  text-decoration: none;
-  display: block;
-}
-
-.portfolio-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
-}
-
-.portfolio-card .card-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  margin-bottom: 20px;
-}
-
-.portfolio-card .card-name {
-  font-family: var(--serif);
-  font-size: 1.4rem;
-  color: var(--charcoal);
-  margin-bottom: 6px;
-}
-
-.portfolio-card .card-desc {
-  font-size: 0.92rem;
-  color: var(--text-mid);
-  font-weight: 300;
-  margin-bottom: 16px;
-  line-height: 1.6;
-}
-
-.portfolio-card .card-status {
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-}
-
-.card-status.pre-launch { color: var(--olive); }
-.card-status.pre-production { color: #96850C; }
-.card-status.coming { color: var(--text-light); }
-
-/* ===== EDITORIAL ===== */
-.editorial {
-  padding-top: 120px;
-  padding-bottom: 120px;
-}
-
-.editorial-header {
   margin-bottom: 56px;
-}
-
-.editorial-header .section-label {
-  font-size: 11px;
-  font-weight: 600;
-  color: var(--olive);
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  margin-bottom: 16px;
-}
-
-.editorial-header h2 {
-  font-family: var(--serif);
-  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
-  color: var(--charcoal);
   line-height: 1.2;
 }
 
-.editorial-pillars {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+/* ===== JOURNAL ===== */
+.journal-entries {
+  display: flex;
+  flex-direction: column;
   gap: 0;
-  border-top: 1px solid var(--border);
 }
 
-.editorial-pillar {
-  padding: 32px 0;
+.journal-entry {
+  padding: 36px 0;
   border-bottom: 1px solid var(--border);
 }
 
-.editorial-pillar:nth-child(odd) {
-  padding-right: 32px;
-  border-right: 1px solid var(--border);
+.journal-entry:first-child {
+  border-top: 1px solid var(--border);
 }
 
-.editorial-pillar:nth-child(even) {
-  padding-left: 32px;
+.journal-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
 }
 
-.editorial-pillar .pillar-number {
+.journal-date {
   font-size: 12px;
-  color: var(--olive);
-  font-weight: 600;
-  margin-bottom: 10px;
+  color: var(--muted-light);
+  font-weight: 400;
+  letter-spacing: 0.5px;
 }
 
-.editorial-pillar h3 {
-  font-family: var(--serif);
-  font-size: 1.2rem;
+.journal-tag {
+  font-size: 11px;
+  color: var(--olive);
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: lowercase;
+}
+
+.journal-text {
+  font-size: clamp(1.05rem, 1.6vw, 1.2rem);
   color: var(--charcoal);
+  font-weight: 300;
+  line-height: 1.75;
+  max-width: 600px;
+}
+
+/* ===== CURRENTLY MAKING ===== */
+.making-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.making-item {
+  padding: 40px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.making-item:first-child {
+  border-top: 1px solid var(--border);
+}
+
+.making-description {
+  font-size: clamp(1.1rem, 1.8vw, 1.3rem);
+  color: var(--charcoal);
+  font-weight: 300;
+  line-height: 1.65;
   margin-bottom: 8px;
 }
 
-.editorial-pillar p {
-  font-size: 0.88rem;
-  color: var(--text-light);
-  font-weight: 300;
-  line-height: 1.7;
-}
-
-.editorial-cta {
-  margin-top: 56px;
-  padding-top: 40px;
-  border-top: 1px solid var(--border);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 20px;
-}
-
-.editorial-cta p {
-  font-size: 0.95rem;
-  color: var(--text-mid);
-  font-weight: 300;
-}
-
-.editorial-cta a {
+.making-brand {
   font-size: 13px;
-  font-weight: 500;
-  color: var(--bg);
-  background: var(--olive);
-  text-decoration: none;
-  padding: 12px 28px;
-  border-radius: 24px;
+  color: var(--muted-light);
+  font-weight: 400;
   letter-spacing: 0.3px;
-  transition: all 0.3s ease;
 }
 
-.editorial-cta a:hover {
-  background: var(--olive-light);
-  transform: translateY(-1px);
+.making-mystery {
+  font-style: italic;
+  color: var(--muted);
 }
 
-/* ===== ABOUT ALEX ===== */
-.about-alex {
-  padding-top: 100px;
-  padding-bottom: 120px;
-  background: var(--bg-warm);
-}
-
-.about-alex-inner {
-  max-width: 680px;
-  margin: 0 auto;
-}
-
-.about-alex .section-label {
-  font-size: 11px;
-  font-weight: 600;
-  color: var(--olive);
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  margin-bottom: 24px;
-}
-
-.about-alex h2 {
-  font-family: var(--serif);
-  font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+/* ===== ABOUT ===== */
+.about-text {
+  font-size: clamp(1rem, 1.5vw, 1.12rem);
   color: var(--charcoal);
-  line-height: 1.3;
-  margin-bottom: 28px;
-}
-
-.about-alex p {
-  font-size: 1.05rem;
-  color: var(--text-mid);
-  line-height: 1.9;
   font-weight: 300;
+  line-height: 2;
+  max-width: 580px;
 }
 
 /* ===== SUBSCRIBE ===== */
-.subscribe {
-  padding-top: 120px;
-  padding-bottom: 140px;
-  text-align: center;
+.subscribe-section {
+  padding: 100px 40px 120px;
+  max-width: 480px;
+  margin: 0 auto;
 }
 
-.subscribe h2 {
+.subscribe-heading {
   font-family: var(--serif);
-  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-style: italic;
+  font-size: clamp(1.4rem, 2.5vw, 1.8rem);
   color: var(--charcoal);
-  line-height: 1.2;
-  margin-bottom: 12px;
-}
-
-.subscribe .sub-text {
-  font-size: 0.95rem;
-  color: var(--text-light);
-  font-weight: 300;
-  margin-bottom: 40px;
+  margin-bottom: 28px;
+  font-weight: 400;
 }
 
 .subscribe-form {
   display: flex;
-  justify-content: center;
   gap: 10px;
-  max-width: 460px;
-  margin: 0 auto 16px;
+  margin-bottom: 12px;
 }
 
 .subscribe-form input {
   flex: 1;
-  padding: 14px 20px;
-  font-size: 15px;
+  padding: 13px 18px;
+  font-size: 14px;
   font-family: var(--sans);
+  font-weight: 300;
   border: 1px solid var(--border);
-  border-radius: 28px;
-  background: var(--bg);
+  border-radius: 4px;
+  background: var(--warm-white);
   color: var(--charcoal);
   outline: none;
   transition: border-color 0.3s ease;
 }
 
 .subscribe-form input::placeholder {
-  color: #B0AAA0;
+  color: var(--muted-light);
 }
 
 .subscribe-form input:focus {
@@ -480,75 +250,61 @@ section {
 }
 
 .subscribe-form button {
-  padding: 14px 28px;
-  font-size: 14px;
+  padding: 13px 24px;
+  font-size: 13px;
   font-weight: 500;
   font-family: var(--sans);
-  background: var(--charcoal);
-  color: var(--bg);
+  background: var(--olive);
+  color: var(--cream);
   border: none;
-  border-radius: 28px;
+  border-radius: 4px;
   cursor: pointer;
   letter-spacing: 0.3px;
-  transition: all 0.3s ease;
+  transition: opacity 0.3s ease;
   white-space: nowrap;
 }
 
 .subscribe-form button:hover {
-  background: var(--olive);
-  transform: translateY(-1px);
-}
-
-.subscribe .no-spam {
-  font-size: 12px;
-  color: var(--text-light);
-  font-weight: 300;
+  opacity: 0.85;
 }
 
 /* ===== FOOTER ===== */
 .footer {
-  padding: 40px;
+  padding: 48px 40px;
   border-top: 1px solid var(--border);
 }
 
 .footer-inner {
-  max-width: 1000px;
+  max-width: 720px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 12px;
 }
 
-.footer-left {
+.footer-copy {
   font-size: 12px;
-  color: var(--text-light);
+  color: var(--muted-light);
   font-weight: 300;
 }
 
-.footer-right {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-.footer-right a {
+.footer-ig {
   font-size: 12px;
-  color: var(--text-light);
+  color: var(--muted-light);
   text-decoration: none;
+  font-weight: 400;
   transition: color 0.3s ease;
 }
 
-.footer-right a:hover {
+.footer-ig:hover {
   color: var(--olive);
 }
 
-/* ===== SCROLL ANIMATIONS ===== */
+/* ===== SCROLL REVEAL ===== */
 .reveal {
   opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
+  transform: translateY(20px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
 }
 
 .reveal.visible {
@@ -556,30 +312,23 @@ section {
   transform: translateY(0);
 }
 
+.reveal-stagger {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal-stagger.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
-  section { padding-left: 24px; padding-right: 24px; }
-  .nav { padding: 16px 24px; }
-  .nav.scrolled { padding: 12px 24px; }
-  .hero { padding: 100px 24px 60px; }
-
-  .portfolio-grid {
-    grid-template-columns: 1fr;
-    gap: 16px;
-  }
-
-  .editorial-pillars {
-    grid-template-columns: 1fr;
-  }
-
-  .editorial-pillar:nth-child(odd) {
-    padding-right: 0;
-    border-right: none;
-  }
-
-  .editorial-pillar:nth-child(even) {
-    padding-left: 0;
-  }
+  .hero { padding: 60px 28px; }
+  .section { padding: 80px 28px; }
+  .section-wide { padding: 80px 28px; }
+  .subscribe-section { padding: 80px 28px 100px; }
 
   .subscribe-form {
     flex-direction: column;
@@ -590,209 +339,178 @@ section {
     width: 100%;
   }
 
-  .editorial-cta {
-    flex-direction: column;
-    text-align: center;
-  }
+  .footer { padding: 36px 28px; }
 
   .footer-inner {
     flex-direction: column;
-    text-align: center;
     gap: 8px;
+    text-align: center;
   }
 }
 
 @media (max-width: 480px) {
-  .nav-brand { font-size: 15px; }
-  .nav-subscribe { padding: 6px 16px; font-size: 12px; }
-  .portfolio-card { padding: 28px 24px; }
+  .hero { padding: 48px 20px; }
+  .section { padding: 64px 20px; }
+  .section-wide { padding: 64px 20px; }
+  .subscribe-section { padding: 64px 20px 80px; }
+  .journal-entry { padding: 28px 0; }
+  .making-item { padding: 28px 0; }
 }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav class="nav" id="nav">
-  <a href="#hero" class="nav-brand">All Vital Organics</a>
-  <a href="#subscribe" class="nav-subscribe">Subscribe</a>
-</nav>
-
 <!-- HERO -->
-<section class="hero" id="hero">
-  <h1 class="hero-title reveal">All Vital<br>Organics</h1>
-  <p class="hero-subtitle reveal">Behind the brands. Before the brands.<br>Beyond the brands.</p>
-  <a href="#subscribe" class="hero-cta reveal">Subscribe to the Weekly Letter</a>
-  <div class="hero-scroll">Scroll</div>
+<section class="hero">
+  <h1 class="hero-name reveal">All Vital<br>Organics</h1>
+  <p class="hero-line reveal">Design, food, health, and the things between.</p>
+  <div class="hero-scroll-hint"></div>
 </section>
 
-<!-- WHAT AVO IS -->
-<section class="about-avo" id="about">
-  <div class="section-inner">
-    <div class="reveal">
-      <p class="section-label">What We Are</p>
-      <p>All Vital Organics is a health and wellness editorial and venture platform founded by Alex Kim. We research, build, and grow brands in supplements, functional food, and wellness experiences. This is where the thinking happens before the product ships. The research before the formula. The question before the answer.</p>
+<div class="divider"></div>
+
+<!-- THE JOURNAL -->
+<div class="section-wide">
+  <h2 class="section-label reveal">The Journal</h2>
+
+  <div class="journal-entries">
+
+    <div class="journal-entry reveal-stagger">
+      <div class="journal-meta">
+        <span class="journal-date">Apr 2, 2026</span>
+        <span class="journal-tag">process</span>
+      </div>
+      <p class="journal-text">spent 14 months on a formula. changed it again yesterday. the bioavailability data from the new peptide source was too good to ignore, even if it means another round with the manufacturer.</p>
     </div>
+
+    <div class="journal-entry reveal-stagger">
+      <div class="journal-meta">
+        <span class="journal-date">Mar 19, 2026</span>
+        <span class="journal-tag">taste</span>
+      </div>
+      <p class="journal-text">tried 6 different greens. none of them tasted like anything I'd actually drink. went back to the drawing board. if I wouldn't have it every morning, I can't ask anyone else to.</p>
+    </div>
+
+    <div class="journal-entry reveal-stagger">
+      <div class="journal-meta">
+        <span class="journal-date">Mar 8, 2026</span>
+        <span class="journal-tag">design</span>
+      </div>
+      <p class="journal-text">the label is 2mm off-center and it's bothering me more than it should. sent it back. the printer probably thinks I'm unreasonable. maybe I am.</p>
+    </div>
+
+    <div class="journal-entry reveal-stagger">
+      <div class="journal-meta">
+        <span class="journal-date">Feb 22, 2026</span>
+        <span class="journal-tag">thought</span>
+      </div>
+      <p class="journal-text">visited the factory in naju. it smelled like mango and industrial cleaner. watched them run a batch. there's something grounding about seeing the thing you designed on a screen actually being made by actual people in an actual building.</p>
+    </div>
+
+    <div class="journal-entry reveal-stagger">
+      <div class="journal-meta">
+        <span class="journal-date">Feb 9, 2026</span>
+        <span class="journal-tag">process</span>
+      </div>
+      <p class="journal-text">most supplement brands use a quarter of the clinical dose and hope nobody checks. we use the full dose and it costs three times as much. still figuring out how to make the math work without raising the price to something unreasonable.</p>
+    </div>
+
   </div>
-</section>
+</div>
 
-<!-- PORTFOLIO -->
-<section class="portfolio" id="portfolio">
-  <div class="section-wide">
-    <div class="portfolio-header reveal">
-      <p class="section-label">Portfolio</p>
-      <h2>The Brands We Power</h2>
+<div class="divider"></div>
+
+<!-- CURRENTLY MAKING -->
+<div class="section-wide">
+  <h2 class="section-label reveal">Currently Making</h2>
+
+  <div class="making-grid">
+
+    <div class="making-item reveal-stagger">
+      <p class="making-description">a collagen supplement that uses the actual clinical dose</p>
+      <span class="making-brand">sensitive ones</span>
     </div>
-    <div class="portfolio-grid">
 
-      <a href="https://sensitiveones.github.io" target="_blank" rel="noopener" class="portfolio-card reveal">
-        <div class="card-dot" style="background: #B8255A;"></div>
-        <div class="card-name">sensitive ones</div>
-        <p class="card-desc">Clinical-dose collagen supplement designed for those who feel everything.</p>
-        <div class="card-status pre-launch">Pre-launch</div>
-      </a>
-
-      <a href="https://pheeew.github.io" target="_blank" rel="noopener" class="portfolio-card reveal">
-        <div class="card-dot" style="background: #6B8E23;"></div>
-        <div class="card-name">Pheeew</div>
-        <p class="card-desc">Synbiotic smoothie. Functional food that actually tastes like food.</p>
-        <div class="card-status pre-production">Pre-production</div>
-      </a>
-
-      <a href="https://008experiences.github.io" target="_blank" rel="noopener" class="portfolio-card reveal">
-        <div class="card-dot" style="background: #1B4D3E;"></div>
-        <div class="card-name">008</div>
-        <p class="card-desc">Curated social experiences for people who want to feel something real.</p>
-        <div class="card-status pre-launch">Pre-launch</div>
-      </a>
-
-      <div class="portfolio-card reveal" style="cursor: default;">
-        <div class="card-dot" style="background: #C8C2B8;"></div>
-        <div class="card-name">Coming Soon</div>
-        <p class="card-desc">The next venture. Still in the research phase. Still asking the right questions.</p>
-        <div class="card-status coming">In development</div>
-      </div>
-
+    <div class="making-item reveal-stagger">
+      <p class="making-description">a synbiotic smoothie in a pouch</p>
+      <span class="making-brand">pheeew</span>
     </div>
+
+    <div class="making-item reveal-stagger">
+      <p class="making-description">a room worth being in</p>
+      <span class="making-brand">008</span>
+    </div>
+
+    <div class="making-item reveal-stagger">
+      <p class="making-description making-mystery">something else. not ready to talk about it yet.</p>
+    </div>
+
   </div>
-</section>
+</div>
 
-<!-- EDITORIAL -->
-<section class="editorial" id="editorial">
-  <div class="section-inner">
-    <div class="editorial-header reveal">
-      <p class="section-label">Editorial</p>
-      <h2>What We're Thinking About</h2>
-    </div>
+<div class="divider"></div>
 
-    <div class="editorial-pillars">
-      <div class="editorial-pillar reveal">
-        <div class="pillar-number">01</div>
-        <h3>Ingredient Deep-Dives</h3>
-        <p>What the research actually says. No cherry-picked studies. No sensationalism. Just the evidence, explained clearly.</p>
-      </div>
-
-      <div class="editorial-pillar reveal">
-        <div class="pillar-number">02</div>
-        <h3>Behind the Brand</h3>
-        <p>Building in public. The real decisions, real trade-offs, and real lessons of growing health and wellness companies from scratch.</p>
-      </div>
-
-      <div class="editorial-pillar reveal">
-        <div class="pillar-number">03</div>
-        <h3>Wellness Industry Analysis</h3>
-        <p>Where the industry is going. What matters, what's noise, and why most wellness marketing deserves skepticism.</p>
-      </div>
-
-      <div class="editorial-pillar reveal">
-        <div class="pillar-number">04</div>
-        <h3>Founder Lessons</h3>
-        <p>What it takes to start something from nothing. The unglamorous, honest version of building a brand you believe in.</p>
-      </div>
-    </div>
-
-    <div class="editorial-cta reveal">
-      <p>One email per week. No fluff.</p>
-      <a href="#subscribe">Get the Letter</a>
-    </div>
+<!-- ABOUT -->
+<div class="section">
+  <div class="reveal">
+    <h2 class="section-label">About</h2>
+    <p class="about-text">I make things in health and wellness. Supplements, food, experiences. I'm not a doctor or a scientist or a guru -- just someone who cares about what goes into a product and how it looks when it gets to you. Based between Seoul and New York. This is where I share what I'm working on and what I'm thinking about.</p>
   </div>
-</section>
+</div>
 
-<!-- ABOUT ALEX -->
-<section class="about-alex" id="alex">
-  <div class="about-alex-inner">
-    <div class="reveal">
-      <p class="section-label">About</p>
-      <h2>The Person Behind the Platform</h2>
-      <p>Alex Kim is building health and wellness brands from Seoul and New York. He runs sensitive ones (supplements), Pheeew (functional food), and 008 (social experiences) -- all under All Vital Organics. Before the products, there's the research. Before the research, there's the question: does this actually work? That's where everything starts. Not with a marketing angle. Not with a trend report. With genuine curiosity about what helps people feel better, and the honesty to say when something doesn't.</p>
-    </div>
-  </div>
-</section>
+<div class="divider"></div>
 
 <!-- SUBSCRIBE -->
-<section class="subscribe" id="subscribe">
-  <div class="section-inner">
-    <div class="reveal">
-      <h2>Get the Weekly Letter</h2>
-      <p class="sub-text">Honest thinking on health, wellness, and building brands that matter.</p>
-      <form class="subscribe-form" onsubmit="handleSubscribe(event)">
-        <input type="email" placeholder="Your email" required aria-label="Email address">
-        <button type="submit">Subscribe</button>
-      </form>
-      <p class="no-spam">No spam. Unsubscribe anytime.</p>
-    </div>
+<div class="subscribe-section">
+  <div class="reveal">
+    <p class="subscribe-heading">A letter, sometimes.</p>
+    <form class="subscribe-form" onsubmit="handleSubscribe(event)">
+      <input type="email" placeholder="your email" required aria-label="Email address">
+      <button type="submit">Subscribe</button>
+    </form>
   </div>
-</section>
+</div>
 
 <!-- FOOTER -->
 <footer class="footer">
   <div class="footer-inner">
-    <div class="footer-left">All Vital Organics &copy; 2026</div>
-    <div class="footer-right">
-      <a href="https://instagram.com/allvitalorganics" target="_blank" rel="noopener">Instagram</a>
-      <span style="color: var(--border);">&middot;</span>
-      <a href="#">Built by Alex Kim</a>
-    </div>
+    <span class="footer-copy">&copy; 2026 All Vital Organics</span>
+    <a href="https://instagram.com/allvitalorganics" target="_blank" rel="noopener" class="footer-ig">Instagram</a>
   </div>
 </footer>
 
 <script>
-// Nav scroll effect
-const nav = document.getElementById('nav');
-const observer = new IntersectionObserver(
-  ([entry]) => {
-    nav.classList.toggle('scrolled', !entry.isIntersecting);
-  },
-  { threshold: 0.8 }
-);
-observer.observe(document.getElementById('hero'));
-
 // Scroll reveal
 const revealObserver = new IntersectionObserver(
   (entries) => {
-    entries.forEach(entry => {
+    entries.forEach((entry, i) => {
       if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
+        const delay = entry.target.classList.contains('reveal-stagger')
+          ? Array.from(entry.target.parentElement.children).indexOf(entry.target) * 80
+          : 0;
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, delay);
         revealObserver.unobserve(entry.target);
       }
     });
   },
-  { threshold: 0.15, rootMargin: '0px 0px -40px 0px' }
+  { threshold: 0.12, rootMargin: '0px 0px -30px 0px' }
 );
 
-document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+document.querySelectorAll('.reveal, .reveal-stagger').forEach(el => revealObserver.observe(el));
 
-// Subscribe handler (placeholder)
+// Subscribe handler
 function handleSubscribe(e) {
   e.preventDefault();
   const input = e.target.querySelector('input');
   const btn = e.target.querySelector('button');
-  const email = input.value;
-  btn.textContent = 'Subscribed';
-  btn.style.background = 'var(--olive)';
+  btn.textContent = 'Thank you';
+  btn.style.opacity = '0.7';
   input.value = '';
   setTimeout(() => {
     btn.textContent = 'Subscribe';
-    btn.style.background = '';
+    btn.style.opacity = '';
   }, 3000);
 }
 </script>
