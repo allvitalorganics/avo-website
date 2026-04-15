@@ -188,7 +188,27 @@
        SPECIFIC CARD STYLES
        ======================================== */
 
-    /* Photo placeholders */
+    /* Photo cards */
+    .photo-card {
+      padding: 0;
+      overflow: hidden;
+      min-height: 140px;
+    }
+
+    .photo-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: grayscale(20%) contrast(1.05);
+      transition: filter 0.4s;
+    }
+
+    .photo-card:hover img {
+      filter: grayscale(0%) contrast(1.1);
+    }
+
+    /* Keep old placeholder style as fallback */
     .photo-placeholder {
       display: flex;
       align-items: center;
@@ -345,9 +365,9 @@
     <span class="t-hand t-lg t-dark">take care of yourself.</span>
   </div>
 
-  <!-- 3. Nature photo placeholder (1x1) -->
-  <div class="card c1 card--green r-16 photo-placeholder" style="min-height: 120px;">
-    <span>[ korean pine ]</span>
+  <!-- 3. Nature photo (1x1) -->
+  <div class="card c1 r-16 photo-card" style="min-height: 120px;">
+    <img src="img/garden.jpg" alt="Aerial view of a garden path" loading="lazy">
   </div>
 
   <!-- ==========================================
@@ -396,8 +416,8 @@
   </div>
 
   <!-- 10. Photo placeholder (1x2 tall) -->
-  <div class="card c1x2 card--cream r-16 photo-placeholder" style="min-height: 280px;">
-    <span class="t-dark">[ haenyeo, jeju ]</span>
+  <div class="card c1x2 r-16 photo-card" style="min-height: 280px;">
+    <img src="img/haenyeo.jpg" alt="Haenyeo sea diver, Jeju" loading="lazy">
   </div>
 
   <!-- ==========================================
@@ -446,8 +466,8 @@
        ========================================== -->
 
   <!-- 16. Nature photo (1x1) -->
-  <div class="card c1 card--green r-16 photo-placeholder">
-    <span>[ bonsai ]</span>
+  <div class="card c1 r-16 photo-card">
+    <img src="img/forra.jpg" alt="Fungal alchemy, green glass" loading="lazy">
   </div>
 
   <!-- 17. Phrase card (1x1) -->
@@ -497,11 +517,26 @@
   </div>
 
   <!-- 24. Photo placeholder (1x1) -->
-  <div class="card c1 card--green r-16 photo-placeholder">
-    <span>[ hands in soil ]</span>
+  <div class="card c1 r-16 photo-card">
+    <img src="img/farmer.jpg" alt="Farmer carrying bananas" loading="lazy">
   </div>
 
-  <!-- 25. Footer card (1x1) -->
+  <!-- 25. Matcha sign photo (1x1) -->
+  <div class="card c1 r-0 photo-card">
+    <img src="img/matcha.jpg" alt="This is the matcha place I was telling you about" loading="lazy">
+  </div>
+
+  <!-- 26. Shelves photo (2x1) -->
+  <div class="card c2 r-16 photo-card">
+    <img src="img/shelves.jpg" alt="Green products on shelves" loading="lazy">
+  </div>
+
+  <!-- 27. Wrestlers photo (1x1) -->
+  <div class="card c1 r-0 photo-card">
+    <img src="img/wrestlers.jpg" alt="Sand wrestlers at sunset" loading="lazy">
+  </div>
+
+  <!-- 28. Footer card (1x1) -->
   <div class="card c1 card--dark r-0" style="justify-content: flex-end; min-height: 100px;">
     <div class="t-mono t-xs t-muted" style="margin-bottom: 6px;">&copy; 2026 All Vital Organics</div>
     <a href="https://instagram.com" target="_blank" class="footer-link">@allvitalorganics</a>
