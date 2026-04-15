@@ -6,7 +6,7 @@
   <title>All Vital Organics</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     /* ========================================
        RESET
@@ -23,11 +23,11 @@
     }
 
     body {
-      background: #0A0A0A;
+      background: #0B1707;
       margin: 0;
       padding: 12px;
       min-height: 100vh;
-      font-family: 'Inter', system-ui, sans-serif;
+      font-family: 'Times New Roman', Times, Georgia, serif;
       color: #F5F0E8;
     }
 
@@ -59,13 +59,15 @@
     }
 
     .top-bar-brand {
-      font-family: 'DM Serif Display', serif;
-      font-size: 16px;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      font-weight: 400;
       color: #F5F0E8;
+      letter-spacing: 0.02em;
     }
 
     .top-bar-link {
-      font-family: 'JetBrains Mono', monospace;
+      font-family: 'Space Grotesk', system-ui, sans-serif;
       font-size: 11px;
       color: #666;
       text-decoration: none;
@@ -73,7 +75,7 @@
     }
 
     .top-bar-link:hover {
-      color: #52B788;
+      color: #6DBE47;
     }
 
     /* ========================================
@@ -137,7 +139,7 @@
     }
 
     .card--green {
-      background: #1B4332;
+      background: #237414;
       color: #F5F0E8;
     }
 
@@ -147,18 +149,43 @@
     }
 
     .card--glass {
-      background: rgba(255,255,255,0.04);
+      background: rgba(109, 190, 71, 0.08);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255,255,255,0.06);
+      border: 1px solid rgba(109, 190, 71, 0.12);
       color: #F5F0E8;
     }
 
+    .card--magenta {
+      background: #B8255A;
+      color: #F5F0E8;
+    }
+
+    .card--white {
+      background: #F5F0E8;
+      color: #237414;
+    }
+
     /* ========================================
-       SPECIAL: Name card — brutalist anchor
+       NAME CARD — AVO green
        ======================================== */
     .card--name {
-      /* removed — all cards use consistent 16px radius */
+      background: #BAD799;
+      color: #237414;
+      position: relative;
+    }
+
+    /* Circle motif decoration */
+    .card--name::after {
+      content: '';
+      position: absolute;
+      top: -30px;
+      right: -30px;
+      width: 100px;
+      height: 100px;
+      border: 2px solid rgba(35, 116, 20, 0.15);
+      border-radius: 50%;
+      pointer-events: none;
     }
 
     /* ========================================
@@ -174,6 +201,32 @@
       height: 100%;
       object-fit: cover;
       display: block;
+      transition: transform 0.4s ease;
+    }
+
+    .photo-card:hover img {
+      transform: scale(1.03);
+    }
+
+    /* Glass overlay on hover for photo cards */
+    .photo-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(109, 190, 71, 0.08);
+      backdrop-filter: blur(0px);
+      -webkit-backdrop-filter: blur(0px);
+      opacity: 0;
+      transition: opacity 0.4s ease, backdrop-filter 0.4s ease, -webkit-backdrop-filter 0.4s ease;
+      pointer-events: none;
+      border-radius: 16px;
+    }
+
+    .photo-card:hover::after {
+      opacity: 1;
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      background: rgba(109, 190, 71, 0.12);
     }
 
     /* ========================================
@@ -183,29 +236,26 @@
       display: flex;
       flex-direction: column;
       height: 100%;
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.06);
+      background: rgba(109, 190, 71, 0.06);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(109, 190, 71, 0.10);
       border-radius: 16px;
       padding: 32px;
-    }
-
-    .conversation-label {
-      font-family: 'Caveat', cursive;
-      font-size: clamp(2rem, 4vw, 3rem);
-      color: #52B788;
-      margin-bottom: 20px;
     }
 
     .conversation-textarea {
       flex: 1;
       min-height: 300px;
       width: 100%;
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.06);
+      background: rgba(109, 190, 71, 0.04);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(109, 190, 71, 0.08);
       border-radius: 16px;
       padding: 20px;
       color: #F5F0E8;
-      font-family: 'Inter', system-ui, sans-serif;
+      font-family: 'Times New Roman', Times, Georgia, serif;
       font-size: 15px;
       line-height: 1.7;
       resize: none;
@@ -214,18 +264,18 @@
     }
 
     .conversation-textarea::placeholder {
-      color: rgba(245,240,232,0.25);
+      color: rgba(245, 240, 232, 0.25);
     }
 
     .conversation-textarea:focus {
-      border-color: rgba(82,183,136,0.3);
-      box-shadow: 0 0 0 3px rgba(82,183,136,0.08);
+      border-color: rgba(109, 190, 71, 0.3);
+      box-shadow: 0 0 0 3px rgba(109, 190, 71, 0.08);
       animation: pulse-border 2s ease-in-out infinite;
     }
 
     @keyframes pulse-border {
-      0%, 100% { box-shadow: 0 0 0 3px rgba(82,183,136,0.08); }
-      50% { box-shadow: 0 0 0 5px rgba(82,183,136,0.15); }
+      0%, 100% { box-shadow: 0 0 0 3px rgba(109, 190, 71, 0.08); }
+      50% { box-shadow: 0 0 0 5px rgba(109, 190, 71, 0.15); }
     }
 
     .conversation-footer {
@@ -236,23 +286,24 @@
     }
 
     .conversation-send {
-      background: #1B4332;
+      background: #237414;
       color: #F5F0E8;
       border: none;
       border-radius: 12px;
       padding: 10px 24px;
-      font-family: 'Inter', system-ui, sans-serif;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
       font-size: 14px;
       cursor: pointer;
       white-space: nowrap;
+      transition: background 0.2s ease;
     }
 
     .conversation-send:hover {
-      background: #2D6A4F;
+      background: #2a8a18;
     }
 
     .conversation-note {
-      font-family: 'JetBrains Mono', monospace;
+      font-family: 'Space Grotesk', system-ui, sans-serif;
       font-size: 10px;
       color: #444;
       letter-spacing: 0.03em;
@@ -270,7 +321,7 @@
       justify-content: center;
       font-family: 'Caveat', cursive;
       font-size: clamp(1.8rem, 3vw, 2.4rem);
-      color: #52B788;
+      color: #6DBE47;
       opacity: 0;
       pointer-events: none;
       transition: opacity 0.4s ease;
@@ -284,35 +335,36 @@
     /* ========================================
        TYPOGRAPHY HELPERS
        ======================================== */
-    .t-serif {
-      font-family: 'DM Serif Display', serif;
+    .t-heading {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     }
 
-    .t-serif-i {
-      font-family: 'DM Serif Display', serif;
-      font-style: italic;
+    .t-body {
+      font-family: 'Times New Roman', Times, Georgia, serif;
     }
 
     .t-hand {
       font-family: 'Caveat', cursive;
     }
 
-    .t-mono {
-      font-family: 'JetBrains Mono', monospace;
+    .t-label {
+      font-family: 'Space Grotesk', system-ui, sans-serif;
     }
 
     /* ========================================
        LEFT COLUMN CARD STYLES
        ======================================== */
     .name-title {
-      font-family: 'DM Serif Display', serif;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
       font-size: clamp(1.2rem, 2vw, 1.6rem);
+      font-weight: 500;
       line-height: 1.2;
+      color: #237414;
     }
 
     .about-text {
-      font-family: 'Inter', system-ui, sans-serif;
-      font-size: 13px;
+      font-family: 'Times New Roman', Times, Georgia, serif;
+      font-size: 14px;
       line-height: 1.6;
       opacity: 0.85;
     }
@@ -327,41 +379,30 @@
        RIGHT COLUMN CARD STYLES
        ======================================== */
     .making-title {
-      font-family: 'DM Serif Display', serif;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
       font-size: 15px;
+      font-weight: 400;
       line-height: 1.5;
     }
 
     .making-label {
-      font-family: 'JetBrains Mono', monospace;
+      font-family: 'Space Grotesk', system-ui, sans-serif;
       font-size: 10px;
-      color: #666;
       margin-top: 8px;
       letter-spacing: 0.06em;
-    }
-
-    .stats-text {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 13px;
-      line-height: 2;
-      letter-spacing: 0.03em;
-    }
-
-    /* Green left border accent */
-    .border-left-green {
-      border-left: 3px solid #52B788;
     }
 
     /* ========================================
        BOTTOM ROW STYLES
        ======================================== */
     .bottom-card {
-      min-height: 140px;
+      aspect-ratio: 1 / 1;
     }
 
     .subscribe-label {
-      font-family: 'DM Serif Display', serif;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
       font-size: clamp(1rem, 2vw, 1.3rem);
+      font-weight: 400;
       margin-bottom: 12px;
     }
 
@@ -372,61 +413,63 @@
 
     .subscribe-form input {
       flex: 1;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(109, 190, 71, 0.06);
+      border: 1px solid rgba(109, 190, 71, 0.12);
       padding: 10px 14px;
       color: #F5F0E8;
-      font-family: 'JetBrains Mono', monospace;
+      font-family: 'Space Grotesk', system-ui, sans-serif;
       font-size: 12px;
       border-radius: 16px;
       outline: none;
     }
 
     .subscribe-form input::placeholder {
-      color: rgba(245,240,232,0.3);
+      color: rgba(245, 240, 232, 0.3);
     }
 
     .subscribe-form input:focus {
-      border-color: #52B788;
+      border-color: #6DBE47;
     }
 
     .subscribe-form button {
-      background: #52B788;
-      color: #0A0A0A;
+      background: #6DBE47;
+      color: #0B1707;
       border: none;
       padding: 10px 20px;
-      font-family: 'JetBrains Mono', monospace;
+      font-family: 'Space Grotesk', system-ui, sans-serif;
       font-size: 12px;
       font-weight: 500;
       cursor: pointer;
       border-radius: 12px;
       letter-spacing: 0.03em;
       white-space: nowrap;
+      transition: background 0.2s ease;
     }
 
     .subscribe-form button:hover {
-      background: #6FCF97;
+      background: #BAD799;
     }
 
     .belief-text {
-      font-family: 'DM Serif Display', serif;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
       font-style: italic;
+      font-weight: 300;
       font-size: clamp(0.95rem, 1.8vw, 1.15rem);
       line-height: 1.5;
       margin-bottom: 16px;
     }
 
     .footer-meta {
-      font-family: 'JetBrains Mono', monospace;
+      font-family: 'Space Grotesk', system-ui, sans-serif;
       font-size: 10px;
-      color: #666;
+      color: rgba(245, 240, 232, 0.4);
       letter-spacing: 0.04em;
     }
 
     .footer-link {
-      color: #52B788;
+      color: #6DBE47;
       text-decoration: none;
-      font-family: 'JetBrains Mono', monospace;
+      font-family: 'Space Grotesk', system-ui, sans-serif;
       font-size: 11px;
     }
 
@@ -435,7 +478,7 @@
     }
 
     /* ========================================
-       RESPONSIVE — 900px
+       RESPONSIVE -- 900px
        ======================================== */
     @media (max-width: 900px) {
       .dashboard {
@@ -474,7 +517,7 @@
     }
 
     /* ========================================
-       RESPONSIVE — 600px
+       RESPONSIVE -- 600px
        ======================================== */
     @media (max-width: 600px) {
       body {
@@ -495,6 +538,10 @@
 
       .bottom-row {
         grid-template-columns: 1fr;
+      }
+
+      .bottom-card {
+        aspect-ratio: 1 / 1;
       }
 
       .conversation-wrap {
@@ -542,8 +589,8 @@
        ========================================== -->
   <div class="left-col">
 
-    <!-- 1. Name card — brutalist anchor, border-radius: 0 -->
-    <div class="card card--green card--name">
+    <!-- 1. Name card -- AVO green bg, dark green text -->
+    <div class="card card--name">
       <span class="name-title">All Vital Organics</span>
     </div>
 
@@ -552,17 +599,17 @@
       <p class="about-text">I make things in health and wellness.</p>
     </div>
 
-    <!-- 3. Phrase card — cream -->
+    <!-- 3. Phrase card -- cream -->
     <div class="card card--cream">
       <span class="phrase-text" style="color:#1A1A1A;">take care of yourself.</span>
     </div>
 
-    <!-- 4. Photo card — garden -->
+    <!-- 4. Photo card -- garden -->
     <div class="card photo-card">
       <img src="img/garden.jpg" alt="Aerial view of a garden" loading="lazy">
     </div>
 
-    <!-- 5. Phrase card — green -->
+    <!-- 5. Phrase card -- deep green -->
     <div class="card card--green">
       <span class="phrase-text">don't worry about it.</span>
     </div>
@@ -570,7 +617,7 @@
   </div>
 
   <!-- ==========================================
-       CENTER — CONVERSATION
+       CENTER -- CONVERSATION
        ========================================== -->
   <div class="center">
     <div class="conversation-wrap" id="conversationWrap">
@@ -592,44 +639,44 @@
        ========================================== -->
   <div class="right-col">
 
-    <!-- 1. Making: collagen -->
-    <div class="card card--glass">
+    <!-- 1. sensitive ones -- magenta -->
+    <div class="card card--magenta">
       <p class="making-title">inner care for sensitive problems</p>
-      <span class="making-label">sensitive ones</span>
+      <span class="making-label" style="color:rgba(255,255,255,0.5)">sensitive ones</span>
     </div>
 
-    <!-- 2. Making: smoothie -->
-    <div class="card card--dark">
+    <!-- 2. pheeew -- white bg, green text -->
+    <div class="card card--white">
       <p class="making-title">the smoothie your gut asked for</p>
-      <span class="making-label">pheeew</span>
+      <span class="making-label" style="color:rgba(35,116,20,0.5)">pheeew</span>
     </div>
 
-    <!-- 3. Making: room -->
+    <!-- 3. 008 -- deep green -->
     <div class="card card--green">
       <p class="making-title">a room worth being in</p>
-      <span class="making-label">008</span>
+      <span class="making-label" style="color:rgba(245,240,232,0.4)">008</span>
     </div>
 
-    <!-- 4. Photo card — haenyeo -->
+    <!-- 4. Photo card -- haenyeo -->
     <div class="card photo-card">
       <img src="img/haenyeo.jpg" alt="Haenyeo sea diver, Jeju" loading="lazy">
     </div>
 
     <!-- 5. Phrase card -->
     <div class="card card--dark">
-      <span class="phrase-text" style="color:#52B788">it's all good.</span>
+      <span class="phrase-text" style="color:#6DBE47">it's all good.</span>
     </div>
 
   </div>
 
   <!-- ==========================================
-       BOTTOM BENTO ROW
+       BOTTOM BENTO ROW -- 4 SQUARE cards
        ========================================== -->
   <div class="bottom-row">
 
-    <!-- 1. Phrase — drive safe -->
+    <!-- 1. Phrase -- get home safe -->
     <div class="card card--dark bottom-card" style="display:flex;align-items:center;justify-content:center;">
-      <span class="phrase-text" style="color:#52B788;">drive safe.</span>
+      <span class="phrase-text" style="color:#6DBE47;">get home safe.</span>
     </div>
 
     <!-- 2. Subscribe -->
@@ -641,14 +688,14 @@
       </form>
     </div>
 
-    <!-- 3. Photo — matcha -->
+    <!-- 3. Photo -- matcha -->
     <div class="card photo-card bottom-card">
       <img src="img/matcha.jpg" alt="Matcha" loading="lazy">
     </div>
 
     <!-- 4. Belief + footer -->
-    <div class="card card--dark bottom-card" style="justify-content:space-between;">
-      <p class="belief-text">take care of what you make.<br>take care of what you consume.</p>
+    <div class="card card--green bottom-card" style="justify-content:space-between;">
+      <p class="belief-text">take care of what you make.</p>
       <div>
         <div class="footer-meta" style="margin-bottom:6px;">&copy; 2026 All Vital Organics</div>
         <a href="https://instagram.com/allvitalorganics" target="_blank" class="footer-link">@allvitalorganics</a>
@@ -661,7 +708,7 @@
 
 <script>
   // ==========================================
-  // IntersectionObserver — staggered reveal
+  // IntersectionObserver -- staggered reveal
   // ==========================================
   (function() {
     var cards = document.querySelectorAll('.card');
@@ -685,7 +732,7 @@
   })();
 
   // ==========================================
-  // Conversation — send message
+  // Conversation -- send message
   // ==========================================
   function sendConversation() {
     var textarea = document.getElementById('conversationTextarea');
