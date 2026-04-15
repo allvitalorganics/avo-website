@@ -33,13 +33,15 @@
     }
 
     /* ========================================
-       DASHBOARD GRID
+       DASHBOARD GRID — 4 columns × 7 rows
+       Row 1: header (0.5 height)
+       Rows 2-6: content (5 equal rows)
+       Row 7: bottom (1 row, same as content rows)
        ======================================== */
     .dashboard {
       display: grid;
-      grid-template-columns: 1fr 2.5fr 1fr;
-      /* 6 content rows: top bar fixed, 5 equal rows for sidebar cards, bottom = same as one card row */
-      grid-template-rows: 36px repeat(5, 1fr) auto;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      grid-template-rows: 0.5fr repeat(6, 1fr);
       gap: 12px;
       max-width: 1400px;
       margin: 0 auto;
@@ -47,10 +49,10 @@
     }
 
     /* ========================================
-       TOP BAR
+       TOP BAR — 4 columns × row 1
        ======================================== */
     .top-bar {
-      grid-column: 1 / -1;
+      grid-column: 1 / 5;
       grid-row: 1;
       display: flex;
       align-items: center;
@@ -81,42 +83,42 @@
     }
 
     /* ========================================
-       COLUMNS
+       GRID PLACEMENT SYSTEM
+       Left side: column 1, rows 2-7 (6 boxes)
+       Center letter: columns 2-3, rows 2-6 (2col × 5row)
+       Right side: column 4, rows 2-7 (6 boxes)
+       Center subscribe: columns 2-3, row 7 (2col × 1row)
        ======================================== */
-    .left-col {
-      grid-row: 2 / 7; /* span all 5 content rows */
-      display: grid;
-      grid-template-rows: repeat(5, 1fr);
-      gap: 12px;
-    }
 
-    .center {
-      grid-row: 2 / 6; /* span rows 2-5 (4 rows), leaving row 6 for bottom */
+    /* Left side cards — column 1 */
+    .left-1  { grid-column: 1; grid-row: 2; }
+    .left-2  { grid-column: 1; grid-row: 3; }
+    .left-3  { grid-column: 1; grid-row: 4; }
+    .left-4  { grid-column: 1; grid-row: 5; }
+    .left-5  { grid-column: 1; grid-row: 6; }
+    .left-6  { grid-column: 1; grid-row: 7; }
+
+    /* Center letter box — columns 2-3, rows 2-6 */
+    .center-letter {
+      grid-column: 2 / 4;
+      grid-row: 2 / 7;
       display: flex;
       flex-direction: column;
     }
 
-    .right-col {
-      grid-row: 2 / 7; /* span all 5 content rows */
-      display: grid;
-      grid-template-rows: repeat(5, 1fr);
-      gap: 12px;
-    }
-
-    /* ========================================
-       BOTTOM ROW — sits in row 6, matches center width
-       ======================================== */
-    .bottom-row {
-      grid-column: 1 / -1; /* span full width like top bar */
+    /* Center subscribe — columns 2-3, row 7 */
+    .center-sub {
+      grid-column: 2 / 4;
       grid-row: 7;
-      display: grid;
-      grid-template-columns: 1fr 1.25fr 1.25fr 1fr;
-      gap: 12px;
     }
 
-    .bottom-span-2 {
-      grid-column: span 2;
-    }
+    /* Right side cards — column 4 */
+    .right-1 { grid-column: 4; grid-row: 2; }
+    .right-2 { grid-column: 4; grid-row: 3; }
+    .right-3 { grid-column: 4; grid-row: 4; }
+    .right-4 { grid-column: 4; grid-row: 5; }
+    .right-5 { grid-column: 4; grid-row: 6; }
+    .right-6 { grid-column: 4; grid-row: 7; }
 
     /* ========================================
        BASE CARD
@@ -604,120 +606,75 @@
     <a href="https://instagram.com/allvitalorganics" target="_blank" class="top-bar-link">instagram</a>
   </div>
 
-  <!-- ==========================================
-       LEFT BENTO COLUMN
-       ========================================== -->
-  <div class="left-col">
-
-    <!-- 1. Name card -- AVO green bg, dark green text -->
-    <div class="card card--name">
-      <span class="name-title">All Vital Organics</span>
-    </div>
-
-    <!-- 2. About card -->
-    <div class="card card--dark">
-      <p class="about-text">I make things in health and wellness.</p>
-    </div>
-
-    <!-- 3. Phrase card -- cream -->
-    <div class="card card--cream">
-      <span class="phrase-text" style="color:#1A1A1A;">take care of yourself.</span>
-    </div>
-
-    <!-- 4. Photo card -- garden -->
-    <div class="card photo-card">
-      <img src="img/garden.jpg" alt="Aerial view of a garden" loading="lazy">
-    </div>
-
-    <!-- 5. Phrase card -- deep green -->
-    <div class="card card--green">
-      <span class="phrase-text">don't worry about it.</span>
-    </div>
-
+  <!-- LEFT COLUMN: 6 cards in column 1, rows 2-7 -->
+  <div class="card card--name left-1">
+    <span class="name-title">All Vital Organics</span>
+  </div>
+  <div class="card card--dark left-2">
+    <p class="about-text">I make things in health and wellness.</p>
+  </div>
+  <div class="card card--cream left-3">
+    <span class="phrase-text" style="color:#1A1A1A;">take care of yourself.</span>
+  </div>
+  <div class="card photo-card left-4">
+    <img src="img/garden.jpg" alt="Aerial view of a garden" loading="lazy">
+  </div>
+  <div class="card card--green left-5">
+    <span class="phrase-text">don't worry about it.</span>
+  </div>
+  <div class="card card--dark left-6">
+    <span class="phrase-text" style="color:#6DBE47;">get home safe.</span>
   </div>
 
-  <!-- ==========================================
-       CENTER -- CONVERSATION
-       ========================================== -->
-  <div class="center">
-    <div class="conversation-wrap" id="conversationWrap">
-      <textarea
-        class="conversation-textarea"
-        id="conversationTextarea"
-        placeholder="feel free. I'm here. april 15, 2026. currently in KST (seoul)."
-      ></textarea>
-      <div class="conversation-footer">
-        <button class="conversation-send" onclick="sendConversation()">send</button>
-        <span class="conversation-note">goes to alex@allvitalorganics.co</span>
-      </div>
-      <div class="conversation-sent" id="conversationSent">sent. take care of yourself.</div>
+  <!-- CENTER LETTER BOX: columns 2-3, rows 2-6 -->
+  <div class="card card--glass center-letter" id="conversationWrap">
+    <textarea
+      class="conversation-textarea"
+      id="conversationTextarea"
+      placeholder="feel free. I'm here. april 15, 2026. currently in KST (seoul)."
+    ></textarea>
+    <div class="conversation-footer">
+      <button class="conversation-send" onclick="sendConversation()">send</button>
+      <span class="conversation-note">goes to alex@allvitalorganics.co</span>
     </div>
+    <div class="conversation-sent" id="conversationSent">sent. take care of yourself.</div>
   </div>
 
-  <!-- ==========================================
-       RIGHT BENTO COLUMN
-       ========================================== -->
-  <div class="right-col">
-
-    <!-- 1. sensitive ones brand -- magenta -->
-    <a href="https://www.forsensitiveones.com" target="_blank" rel="noopener" class="card card--magenta" style="text-decoration:none;cursor:pointer">
-      <p class="making-title">inner care for sensitive problems</p>
-      <span class="making-label" style="color:rgba(255,255,255,0.5)">sensitive ones</span>
-    </a>
-
-    <!-- 2. pheeew -- white bg, green text -->
-    <a href="https://www.pheeew.com" target="_blank" rel="noopener" class="card card--white" style="text-decoration:none;cursor:pointer">
-      <p class="making-title">the smoothie your gut asked for</p>
-      <span class="making-label" style="color:rgba(35,116,20,0.5)">pheeew</span>
-    </a>
-
-    <!-- 3. 008 -- deep green, no link yet -->
-    <div class="card card--green">
-      <p class="making-title">a room worth being in</p>
-      <span class="making-label" style="color:rgba(245,240,232,0.4)">008</span>
-    </div>
-
-    <!-- 4. sensitive ones agency -->
-    <a href="https://www.sensitiveones.co" target="_blank" rel="noopener" class="card card--dark" style="text-decoration:none;cursor:pointer">
-      <p class="making-title" style="color:#F5F0E8">creator management &amp; brand activation</p>
-      <span class="making-label" style="color:rgba(245,240,232,0.4)">sensitive ones agency</span>
-    </a>
-
-    <!-- 5. Photo card -- haenyeo -->
-    <div class="card photo-card">
-      <img src="img/haenyeo.jpg" alt="Haenyeo sea diver, Jeju" loading="lazy">
-    </div>
-
+  <!-- CENTER SUBSCRIBE: columns 2-3, row 7 -->
+  <div class="card card--glass center-sub">
+    <span class="subscribe-label">a letter, sometimes.</span>
+    <form class="subscribe-form" onsubmit="return false;">
+      <input type="email" placeholder="your@email.com">
+      <button type="submit">subscribe</button>
+    </form>
   </div>
 
-  <!-- ==========================================
-       BOTTOM BENTO ROW -- 4 SQUARE cards
-       ========================================== -->
-  <div class="bottom-row">
-
-    <!-- 1. Photo -- matcha -->
-    <div class="card photo-card bottom-card">
-      <img src="img/matcha.jpg" alt="Matcha" loading="lazy">
+  <!-- RIGHT COLUMN: 6 cards in column 4, rows 2-7 -->
+  <a href="https://www.forsensitiveones.com" target="_blank" rel="noopener" class="card card--magenta right-1" style="text-decoration:none;cursor:pointer">
+    <p class="making-title">inner care for sensitive problems</p>
+    <span class="making-label" style="color:rgba(255,255,255,0.5)">sensitive ones</span>
+  </a>
+  <a href="https://www.pheeew.com" target="_blank" rel="noopener" class="card card--white right-2" style="text-decoration:none;cursor:pointer">
+    <p class="making-title">the smoothie your gut asked for</p>
+    <span class="making-label" style="color:rgba(35,116,20,0.5)">pheeew</span>
+  </a>
+  <div class="card card--green right-3">
+    <p class="making-title">a room worth being in</p>
+    <span class="making-label" style="color:rgba(245,240,232,0.4)">008</span>
+  </div>
+  <a href="https://www.sensitiveones.co" target="_blank" rel="noopener" class="card card--dark right-4" style="text-decoration:none;cursor:pointer">
+    <p class="making-title" style="color:#F5F0E8">creator management &amp; brand activation</p>
+    <span class="making-label" style="color:rgba(245,240,232,0.4)">sensitive ones agency</span>
+  </a>
+  <div class="card photo-card right-5">
+    <img src="img/haenyeo.jpg" alt="Haenyeo sea diver, Jeju" loading="lazy">
+  </div>
+  <div class="card card--green right-6" style="justify-content:space-between;">
+    <p class="belief-text">take care of what you make.</p>
+    <div>
+      <div class="footer-meta" style="margin-bottom:4px;">&copy; 2026 All Vital Organics</div>
+      <a href="https://instagram.com/allvitalorganics" target="_blank" class="footer-link">@allvitalorganics</a>
     </div>
-
-    <!-- 2+3. Subscribe -- spans 2 middle columns -->
-    <div class="card card--glass bottom-card bottom-span-2">
-      <span class="subscribe-label">a letter, sometimes.</span>
-      <form class="subscribe-form" onsubmit="return false;">
-        <input type="email" placeholder="your@email.com">
-        <button type="submit">subscribe</button>
-      </form>
-    </div>
-
-    <!-- 4. Belief + footer -->
-    <div class="card card--green bottom-card" style="justify-content:space-between;">
-      <p class="belief-text">take care of what you make.</p>
-      <div>
-        <div class="footer-meta" style="margin-bottom:6px;">&copy; 2026 All Vital Organics</div>
-        <a href="https://instagram.com/allvitalorganics" target="_blank" class="footer-link">@allvitalorganics</a>
-      </div>
-    </div>
-
   </div>
 
 </div>
